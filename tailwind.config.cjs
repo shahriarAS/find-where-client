@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'bubblegum': ["Bubblegum Sans", 'cursive']
+        'Saira': ["Saira"]
       }
     }
   },
