@@ -1,0 +1,41 @@
+{
+  "name": "find-where-client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@firebase/database": "^0.13.3",
+    "axios": "^0.27.2",
+    "firebase": "^9.9.0",
+    "html-to-image": "^1.9.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-easyfullscreen": "^1.1.2",
+    "react-firebase-hooks": "^5.0.3",
+    "react-hook-form": "^7.33.1",
+    "react-hot-toast": "^2.3.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "6",
+    "react-timer-hook": "^3.0.5",
+    "recharts": "^2.1.12",
+    "simple-zustand-devtools": "^1.1.0",
+    "socket.io-client": "^4.5.1",
+    "use-sound": "^4.0.1",
+    "zustand": "^4.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.0",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6",
+    "vite": "^3.0.0"
+  }
+}
