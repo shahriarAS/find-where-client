@@ -14,11 +14,12 @@ function GameQuestionPanel() {
             if (state.questionNumber < (state.questionSet.length - 1)) {
                 state.addQuestionNumber(1)
                 state.setAnswer()
-            } else{
+            } else {
                 state.setGameOver(true)
             }
             state.setUpdateQ(false)
             state.setChoiceModal(false)
+            state.setSelectedChoice("")
         }, 4000)
     }
 

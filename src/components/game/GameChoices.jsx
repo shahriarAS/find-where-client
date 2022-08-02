@@ -10,6 +10,7 @@ function GameChoices({ choices, checkAnswer }) {
 
     const submitAnswer = (e, ans) => {
         state.setLastAnswer(state.answer)
+        state.setSelectedChoice(ans)
         // e.target.classList.add("blink-1")
         choiceRef.current.childNodes.forEach(childN => {
             childN.classList.add("opacity-50", "pointer-events-none", "cursor-not-allowed")

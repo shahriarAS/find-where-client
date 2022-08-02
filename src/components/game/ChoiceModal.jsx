@@ -15,7 +15,7 @@ function ChoiceModal() {
         }
     }, [state.time]);
 
-    
+
     return (
         <div className={`choiceModal absolute z-50 transition-all duration-500 ${state.choiceModal ? "top-0" : "-top-[100%]"} ${state.isQuesCorr ? "bg-green-400" : "bg-[#FF3355]"} w-full py-4 text-white font-Saira flex flex-col items-center justify-center`}>
             {
@@ -40,7 +40,7 @@ function ChoiceModal() {
                     <>
                         <div className="bg-black/20 px-4 py-1 w-80 text-3xl text-center font-bold">
                             <p className='text-white text-2xl'>
-                                Incorrect
+                                {state.selectedChoice ? "Incorrect" : "Time Up"}
                             </p>
                             <p className='text-white text-xl'>
                                 Answer Streak Lost

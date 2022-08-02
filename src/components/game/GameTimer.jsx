@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import toast from "react-hot-toast";
 import { useTimer } from 'react-timer-hook';
 import useStore from "../../store";
 import globalVariable from "../../utils/globalVariable";
@@ -17,17 +16,25 @@ function GameTimer() {
         restart,
     } = useTimer({
         expiryTimestamp: time.setSeconds(time.getSeconds() + (globalVariable?.maxTime)), autoStart: true, onExpire: () => {
-            toast.error("Times Up.")
+            state.incrementIncorrectCount()
+            state.resetAnswerStreak()
+            state.setIsQuesCorr(false)
+            state.setChoiceModal(true)
             state.setUpdateQ(true)
+            // setTimeout(function () {
+            //     state.incrementIncorrectCount()
+            //     state.resetAnswerStreak()
+            //     state.setIsQuesCorr(false)
+            // }, 500);
         }
     });
 
     useEffect(() => {
-        var time = new Date();
         if (state.updateQ == true) {
-            restart(time.setSeconds(time.getSeconds() + (globalVariable?.maxTime)))
+            console.log("Should Restart Time")
+            var time = new Date();
+            restart(time.setSeconds(time.getSeconds() + (globalVariable?.maxTime)), true)
         }
-
         if (state.gamePause == true || state.gameOver == true || state.gameStart == true || state.choiceModal == true) {
             const toShowTime = (globalVariable.maxTime - seconds)
             state.setTime(toShowTime)
@@ -36,6 +43,7 @@ function GameTimer() {
             resume()
             console.log("Now Resume")
         }
+
     }, [state.updateQ, state.gamePause, state.gameOver, state.gameBonus, state.gameStart, state.choiceModal]);
 
     return (
