@@ -15,26 +15,7 @@ function ChoiceModal() {
         }
     }, [state.time]);
 
-    // const checkAnswer = () => {
-    //     if (modalMode == "correct") {
-    //         state.incrementCorrectCount()
-    //         console.log(state.time)
-    //         state.addScore(toAddScore)
-    //     } else {
-    //         state.incrementIncorrectCount()
-    //     }
-
-    //     if (state.questionNumber == 9) {
-    //         alert("Game Over")
-    //     } else {
-    //         state.setUpdateQ(true)
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     state.selectedChoice ? checkAnswer() : null
-    // }, [state.selectedChoice]);
-
+    
     return (
         <div className={`choiceModal absolute z-50 transition-all duration-500 ${state.choiceModal ? "top-0" : "-top-[100%]"} ${state.isQuesCorr ? "bg-green-400" : "bg-[#FF3355]"} w-full py-4 text-white font-Saira flex flex-col items-center justify-center`}>
             {
