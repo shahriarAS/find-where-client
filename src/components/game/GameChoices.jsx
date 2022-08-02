@@ -41,11 +41,7 @@ function GameChoices({ choices, checkAnswer }) {
             }
 
             state.setChoiceModal(true)
-            if (state.questionNumber == 9) {
-                alert("Game Over")
-            } else {
-                state.setUpdateQ(true)
-            }
+            state.setUpdateQ(true)
         }
 
         setTimeout(function () {
