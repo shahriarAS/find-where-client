@@ -1,21 +1,18 @@
 // store/index.js
-
 import { mountStoreDevtool } from 'simple-zustand-devtools';
+import { io } from "socket.io-client";
 import create from 'zustand';
-import generatePosition from '../utils/generatePosition';
-// const socket = io(import.meta.env.VITE_SOCKET_SERVER_URL);
+const socket = io(import.meta.env.VITE_SOCKET_SERVER_URL);
 
 const initialState = {
-    // socket: socket,
+    socket: socket,
     username: "",
     gameMode: "singleplayer",
     gameCode: "",
     score: 0,
     continousScore: 0,
     opponentScore: 0,
-    maxLevel: 7,
     hintTook: 0,
-    level: localStorage.getItem('gameLevel') || 1,
     time: "init",
     highScore: 0,
     bestTime: 0,
@@ -28,81 +25,21 @@ const initialState = {
     gameBonus: "init",
     gameStart: "init",
     gameWon: false,
-    reduceTime: false,
     showHint: false,
     isLoading: false,
-    targetItems: {
-        level1: [
-            { file: "1_1", position: [54, 40] },
-            { file: "1_2", position: [19.5, 18.5] },
-            { file: "1_3", position: [50, 8] },
-            { file: "1_4", position: [66, 8] },
-            { file: "1_5", position: [54, 65] },
-            { file: "1_6", position: [69, 30] },
-            { file: "2_14", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_15", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-        ],
-        level2: [
-            { file: "2_1", position: [10, 50] },
-            { file: "2_2", position: [55, 4] },
-            { file: "2_3", position: [50, 44] },
-            { file: "2_4", position: [15, 34] },
-            { file: "2_5", position: [77, 24] },
-            { file: "2_6", position: [79, 42] },
-            { file: "2_18", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_19", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-        ],
-        level3: [
-            { file: "1_7", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_8", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_9", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_10", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_11", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_12", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_22", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_23", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-        ],
-        level4: [
-            { file: "2_7", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_8", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_9", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_10", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_11", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_12", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_26", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_27", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-        ],
-        level5: [
-            { file: "1_13", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_14", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_15", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_16", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_17", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_18", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_10", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_11", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-        ],
-        level6: [
-            { file: "1_19", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_20", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_21", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_22", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_23", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_24", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_22", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_23", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-        ],
-        level7: [
-            { file: "1_25", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_26", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_27", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_28", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "1_29", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_13", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_11", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-            { file: "2_12", position: [generatePosition(90, 90).x, generatePosition(90, 90).y] },
-        ],
-    },
+    answer: "",
+    lastAnswer: "",
+    selectedChoice: null,
+    questionSet: [],
+    questionNumber: 0,
+    choices: [],
+    targetCity: [],
+    playBy: "",
+    correctCount: 0,
+    incorrectCount: 0,
+    updateQ: "init",
+    choiceModal: false,
+    isQuesCorr: "init"
 }
 
 const useStore = create(set => ({
@@ -125,12 +62,6 @@ const useStore = create(set => ({
     addOpponentScore: () => set(state => ({
         opponentScore: state.opponentScore + 1
     })),
-    setLevel: (val) => set(state => ({
-        level: val
-    })),
-    addLevel: () => set(state => ({
-        level: state.level + 1
-    })),
     addHintTook: () => set(state => ({
         hintTook: state.hintTook + 1
     })),
@@ -148,13 +79,6 @@ const useStore = create(set => ({
     })),
     toggleFullScreen: () => set(state => ({
         isFullScreen: !state.isFullScreen
-    })),
-    removeTargetItem: (level, toRemove) => set(state => ({
-        targetItems: {
-            ...state.targetItems,
-            [`level${level}`]: state.targetItems[`level${level}`].filter(item => item.file != toRemove)
-        }
-
     })),
     setGameOver: (val) => set(state => ({
         gameOver: val
@@ -186,10 +110,83 @@ const useStore = create(set => ({
             val
         ],
     })),
+    setQuestionSet: (questionSet) => set((state) => (
+        {
+            questionSet: questionSet
+        }
+    )),
+    setAnswer: () => set((state) => (
+        {
+            answer: state.choices[state.choices.findIndex(x => x.status == "correct")].name
+        }
+    )),
+    setLastAnswer: (val) => set((state) => (
+        {
+            lastAnswer: val
+        }
+    )),
+    setSelectedChoice: (choice) => set((state) => (
+        {
+            selectedChoice: choice
+        }
+    )),
+    addQuestionNumber: (val) => set((state) => (
+        {
+            questionNumber: state.questionNumber + val
+        }
+    )),
+    setChoices: () => set((state) => (
+        {
+            choices: state.questionSet[state.questionNumber].sort(function (a, b) {
+                if (a.name < b.name) {
+                    return -1;
+                }
+                if (a.name > b.name) {
+                    return 1;
+                }
+                return 0;
+            })
+        }
+    )),
+    setTargetCity: () => set((state) => (
+        {
+            targetCity: state.choices[state.choices.findIndex(x => x.status == "correct")]
+        }
+    )),
+
+    setPlayBy: (val) => set((state) => (
+        {
+            playBy: val
+        }
+    )),
+    incrementCorrectCount: () => set((state) => (
+        {
+            correctCount: state.correctCount + 1
+        }
+    )),
+    incrementIncorrectCount: () => set((state) => (
+        {
+            incorrectCount: state.incorrectCount + 1
+        }
+    )),
+    setUpdateQ: (val) => set((state) => (
+        {
+            updateQ: val
+        }
+    )),
+    setChoiceModal: (val) => set((state) => (
+        {
+            choiceModal: val
+        }
+    )),
+    setIsQuesCorr: (val) => set((state) => (
+        {
+            isQuesCorr: val
+        }
+    )),
     resetState: (val = null) => set(state => (
         val ? {
             ...state,
-            level: val.level,
             isSound: val.isSound,
             isMusic: val.isMusic,
             difficulty: val.difficulty

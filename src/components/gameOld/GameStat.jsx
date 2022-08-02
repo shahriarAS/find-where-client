@@ -35,7 +35,7 @@ function GameStat() {
 
     return (
         <>
-            <div className="relative control-btn bg-cover bg-center bg-no-repeat w-32 h-20 flex flex-col items-center justify-center text-center text-white font-bubblegum text-lg">
+            <div className="relative control-btn bg-cover bg-center bg-no-repeat w-32 h-20 flex flex-col items-center justify-center text-center text-white font-Saira text-lg">
                 <img src={statBarBG} alt="" className="aboslute inset-0 w-full h-full" />
                 <div className="absolute ">
                     <p>Your Score:</p>
@@ -44,7 +44,7 @@ function GameStat() {
             </div>
             {
                 state?.gameMode == "multiplayer" ? (
-                    <div className="relative control-btn bg-cover bg-center bg-no-repeat w-32 h-24 flex flex-col items-center justify-center text-center text-white font-bubblegum text-lg">
+                    <div className="relative control-btn bg-cover bg-center bg-no-repeat w-32 h-24 flex flex-col items-center justify-center text-center text-white font-Saira text-lg">
                         <img src={statBarBG} alt="" className="aboslute inset-0 w-full h-full" />
                         <div className="absolute ">
                             <p className="flex flex-wrap px-4 pt-1">Opponent Score:</p>
@@ -54,7 +54,7 @@ function GameStat() {
                 ) : null
             }
             <GameTimer />
-            <div className="relative control-btn bg-cover bg-center bg-no-repeat w-32 h-16 flex flex-col items-center justify-center text-center text-white font-bubblegum text-lg">
+            <div className="relative control-btn bg-cover bg-center bg-no-repeat w-32 h-16 flex flex-col items-center justify-center text-center text-white font-Saira text-lg">
                 <img src={statBarBG} alt="" className="aboslute inset-0 w-full h-full" />
                 <div className="absolute ">
                 <p>Level:</p>

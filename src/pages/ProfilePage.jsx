@@ -42,7 +42,7 @@ function ProfilePage() {
 
     return (
         loadingData ? (<Loading />) : (
-            <div className="register-page h-full flex flex-col justify-center font-bubblegum text-[#424242] uppercase">
+            <div className="register-page h-full flex flex-col justify-center font-Saira text-[#424242] uppercase">
                 <div className="profile-top flex">
                     <div className="register-form p-10 relative flex-1 bg-cover bg-center bg-no-repeat bg-blend-overlay bg-white/50" style={{ backgroundImage: `url(${greyMap})` }}>
                         <img src={globeImg} alt="Globe" className="absolute w-64 bottom-0 -left-40" />

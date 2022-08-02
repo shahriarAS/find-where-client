@@ -47,7 +47,7 @@ function Leaderboard() {
 
     return (
         loadingData ? (<Loading />) : (
-            <div className="min-h-screen w-full font-bubblegum bg-cover bg-blend-overlay bg-white/40 text-[#424242]  uppercase flex flex-col items-center p-10" style={{ backgroundImage: `url(${greyMap})` }
+            <div className="min-h-screen w-full font-Saira bg-cover bg-blend-overlay bg-white/40 text-[#424242]  uppercase flex flex-col items-center p-10" style={{ backgroundImage: `url(${greyMap})` }
             }>
                 <h1 className="leaderboard-title uppercase text-5xl">
                     Leaderboard

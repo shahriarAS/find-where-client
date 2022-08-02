@@ -1067,6 +1067,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-leaflet/core@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@react-leaflet/core@npm:2.0.0"
+  peerDependencies:
+    leaflet: ^1.8.0
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 8528b05bb3f2218dc783d508fad571ed34986bb9a15e8296f3ca6e090934ee4b9858172cab25bc2ae3255c880660d648477bb609c496bee70d1c0e3fb99f0533
+  languageName: node
+  linkType: hard
+
 "@socket.io/component-emitter@npm:~3.1.0":
   version: 3.1.0
   resolution: "@socket.io/component-emitter@npm:3.1.0"
@@ -1546,6 +1557,13 @@ __metadata:
   version: 1.0.3
   resolution: "core-util-is@npm:1.0.3"
   checksum: 9de8597363a8e9b9952491ebe18167e3b36e7707569eed0ebf14f8bba773611376466ae34575bca8cfe3c767890c859c74056084738f09d4e4a6f902b2ad7d99
+  languageName: node
+  linkType: hard
+
+"countup.js@npm:^2.2.0":
+  version: 2.3.2
+  resolution: "countup.js@npm:2.3.2"
+  checksum: 77bb509cd17619568c8d841f9dbba7d75c70948d7f9acd0a1acea80e3894c4b4173e27e8896268c1f53415ebee465229f1e623da5ad759083a618484ac4f9b60
   languageName: node
   linkType: hard
 
@@ -2082,15 +2100,18 @@ __metadata:
     axios: ^0.27.2
     firebase: ^9.9.0
     html-to-image: ^1.9.0
+    leaflet: ^1.8.0
     postcss: ^8.4.14
     prop-types: ^15.8.1
     react: ^18.2.0
+    react-countup: ^6.3.0
     react-dom: ^18.2.0
     react-easyfullscreen: ^1.1.2
     react-firebase-hooks: ^5.0.3
     react-hook-form: ^7.33.1
     react-hot-toast: ^2.3.0
     react-icons: ^4.4.0
+    react-leaflet: ^4.0.1
     react-router-dom: 6
     react-timer-hook: ^3.0.5
     recharts: ^2.1.12
@@ -2574,6 +2595,13 @@ __metadata:
     readable-stream: ~2.3.6
     setimmediate: ^1.0.5
   checksum: 80cc8e0e466467e9e21447f604f9262509b29a9c65170a3fee415ac0a403beb370840973cdc17f75d2b92ab3e60685f94d267706510d46bed2dd14858a38e459
+  languageName: node
+  linkType: hard
+
+"leaflet@npm:^1.8.0":
+  version: 1.8.0
+  resolution: "leaflet@npm:1.8.0"
+  checksum: 4a27895d4253844f2f13f94cbc52a2030b10833cdf553085d931b834745236a8d2a38844a01eb968cc109eb43268bfadb97aad85b51deffb17b6ccd106542e00
   languageName: node
   linkType: hard
 
@@ -3189,6 +3217,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-countup@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "react-countup@npm:6.3.0"
+  dependencies:
+    countup.js: ^2.2.0
+  peerDependencies:
+    react: ">= 16.3.0"
+  checksum: 2ac8dc46e46de6de8ec68a1b6a22848214a0a4339bf1305c3e01ab71cbbe63f4ab94c4424b89881256365b85bb67479d26d63181b27888576aa644d7c7b3a1ce
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -3254,6 +3293,19 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
+  languageName: node
+  linkType: hard
+
+"react-leaflet@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "react-leaflet@npm:4.0.1"
+  dependencies:
+    "@react-leaflet/core": ^2.0.0
+  peerDependencies:
+    leaflet: ^1.8.0
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: f5e94c0e3b49f8d7d3c464185f8624ab0ad6958a950dd153974183ed93be1b61216c1cddd09967a85e65762f6696a39dfac086ab770980689405e80b3c43a6c1
   languageName: node
   linkType: hard
 

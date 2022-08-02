@@ -8,7 +8,7 @@ import Loading from "../components/root/Loading";
 function Register() {
     const [loading, setLoading] = useState(false)
     return (
-        loading ? (<Loading />) : (<div className="register-page h-full max-h-[800px] flex font-bubblegum text-[#424242] uppercase">
+        loading ? (<Loading />) : (<div className="register-page h-full max-h-[800px] flex font-Saira text-[#424242] uppercase">
             <div className="register-form relative flex-1 bg-cover bg-center bg-no-repeat bg-blend-multiply bg-gray-200">
                 <img src={globeImg} alt="Globe" className="absolute w-64 bottom-0 -left-40" />
                 <div className="register-area w-1/2 h-full py-6 m-auto flex flex-col items-center">

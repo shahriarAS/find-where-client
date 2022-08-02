@@ -49,13 +49,13 @@ function GameControl({ goFullScreen, closeScreen }) {
 
     return (
         <div className="game-controls w-full border bg-no-repeat bg-cover bg-center flex flex-col items-center justify-center py-4 gap-4">
-            <div className="relative control-btn w-32 h-14 flex items-center justify-center text-center text-white font-bubblegum text-3xl transition-all duration-75 cursor-pointer hover:shadow-2xl hover:scale-105" onClick={showHint}>
+            <div className="relative control-btn w-32 h-14 flex items-center justify-center text-center text-white font-Saira text-3xl transition-all duration-75 cursor-pointer hover:shadow-2xl hover:scale-105" onClick={showHint}>
                 <img src={button} alt="" className="aboslute inset-0 w-full h-full" />
                 <p className="absolute">Hint</p>
             </div>
             {
                 state.gameMode == "singleplayer" ? (
-                    <div className="relative control-btn w-32 h-14 flex items-center justify-center text-center text-white font-bubblegum text-3xl transition-all duration-75 cursor-pointer hover:shadow-2xl hover:scale-105" onClick={() => {
+                    <div className="relative control-btn w-32 h-14 flex items-center justify-center text-center text-white font-Saira text-3xl transition-all duration-75 cursor-pointer hover:shadow-2xl hover:scale-105" onClick={() => {
                         // Reduce Time Problem Fixed. Warning! Don't touch without prior knowledge
                         state.setReduceTime(0)
                         state.setGamePause(true)

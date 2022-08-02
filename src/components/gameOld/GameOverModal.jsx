@@ -168,7 +168,7 @@ function GameOverModal() {
 
     return (
         <div id="popup-modal" className={`absolute inset-0 ${(state.gameOver == true || forceOpenModal == true) ? "slide-in-top" : (state.gameOver == false || forceOpenModal == false) ? "-top-[100%]" : "hidden"
-            } font-bubblegum overflow-y-auto overflow-x-hidden z-50 h-modal h-full justify-center items-center flex bg-blend-overlay bg-white/40 transition-all duration-500`} aria-modal="true" role="dialog">
+            } font-Saira overflow-y-auto overflow-x-hidden z-50 h-modal h-full justify-center items-center flex bg-blend-overlay bg-white/40 transition-all duration-500`} aria-modal="true" role="dialog">
             <div className="relative p-4 w-96" ref={imageRef}>
                 <div className="relative w-full h-full rounded-lg bg-cover bg-center bg-no-repeat px-4 pt-4" style={{ backgroundImage: `url(${statBG})` }}>
                     <div className="py-8 pt-10 text-center flex flex-col items-center justify-between">

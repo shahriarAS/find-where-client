@@ -45,7 +45,6 @@ function RegForm({ loading, setLoading }) {
                             isMusic: true
                         },
                         gamePlayed: {},
-                        level: 1,
                     });
                     setLoading(false)
                     toast.success("Successfully Registered and Signed In.")

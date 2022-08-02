@@ -43,7 +43,7 @@ const GameTimer = () => {
 
     return (
         <>
-            <div className="relative control-btn bg-cover bg-center bg-no-repeat w-32 h-20 flex flex-col items-center justify-center text-center text-white font-bubblegum text-lg">
+            <div className="relative control-btn bg-cover bg-center bg-no-repeat w-32 h-20 flex flex-col items-center justify-center text-center text-white font-Saira text-lg">
                 <img src={statBarBG} alt="" className="aboslute inset-0 w-full h-full" />
                 <div className="absolute ">
                     <p>Time:</p>

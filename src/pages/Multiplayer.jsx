@@ -20,7 +20,7 @@ function Multiplayer() {
                 <GameScreen />
             ) : (
                 <>
-                    <div className="multiplayer w-full h-full font-bubblegum bg-cover bg-blend-overlay bg-gray-900/50 text-[#424242]  uppercase flex flex-col justify-center items-center p-10 py-28" style={{ backgroundImage: `url(${greyMap})` }
+                    <div className="multiplayer w-full h-full font-Saira bg-cover bg-blend-overlay bg-gray-900/50 text-[#424242]  uppercase flex flex-col justify-center items-center p-10 py-28" style={{ backgroundImage: `url(${greyMap})` }
                     }>
                         <div className="leaderboard-table w-full h-80 flex gap-12">
                             <div onClick={() => setOpenHostModal(true)} className="host-game transition-all duration-150 cursor-pointer rounded-lg hover:scale-105 h-full w-full flex items-center justify-center text-[#424242] text-5xl bg-gradient-to-r from-[#84fab0] to-[#8fd3f4]">Host Game</div>
