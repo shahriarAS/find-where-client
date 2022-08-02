@@ -36,13 +36,13 @@ function GameArea() {
                 e.target.style.opacity = 0
                 state.removeTargetItem(state.level, getFilename(item))
                 state.addScore()
-                if (state.continousScore == 2) {
+                if (state.answerStreak == 2) {
                     // toast.success("You got Bonus 3 Point.")
                     state.setGameBonus(true)
                     state.addScore(3)
-                    state.resetContinousScore()
+                    state.resetAnswerStreak()
                 } else {
-                    state.addContinousScore(1)
+                    state.addAnswerStreak(1)
                 }
 
                 // if (state.targetItems[`level${state.level}`].length == 1) {
@@ -59,7 +59,7 @@ function GameArea() {
             setTimeout(function () {
                 state.setReduceTime(Math.random())
                 e.target.classList.remove("shake-horizontal")
-                state.resetContinousScore()
+                state.resetAnswerStreak()
             }, 500);
             e.target.classList.add("shake-horizontal")
         }

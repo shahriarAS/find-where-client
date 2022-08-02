@@ -1,11 +1,19 @@
-import CountUp from 'react-countup';
-import { BsCheckLg } from "react-icons/bs";
-import { FaTimes } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import useStore from "../../store";
+import globalVariable from "../../utils/globalVariable";
 
 function ChoiceModal() {
     const state = useStore((state) => state);
-    // const toAddScore = (globalVariable.maxTime - state.time) * 60
+    const [toAddScore, setToAddScore] = useState(0)
+
+    useEffect(() => {
+        if (state.time > 0 & state.isQuesCorr) {
+            // Scoring Formula From Kahoots
+            const score = (1 - ((state.time / globalVariable.maxTime) / 2)) * 1000
+            state.addScore(score)
+            setToAddScore(score)
+        }
+    }, [state.time]);
 
     // const checkAnswer = () => {
     //     if (modalMode == "correct") {
@@ -28,27 +36,34 @@ function ChoiceModal() {
     // }, [state.selectedChoice]);
 
     return (
-        <div className={`choiceModal absolute z-50 transition-all duration-300 inset-0 top-[100vh] ${state.choiceModal ? "top-0" : ""} ${state.isQuesCorr ? "bg-green-400" : "bg-[#FF3355]"} w-full h-64 text-white font-Saira flex flex-col gap-2 items-center justify-center`}>
+        <div className={`choiceModal absolute z-50 transition-all duration-500 ${state.choiceModal ? "top-0" : "-top-[100%]"} ${state.isQuesCorr ? "bg-green-400" : "bg-[#FF3355]"} w-full py-4 text-white font-Saira flex flex-col items-center justify-center`}>
             {
                 state.isQuesCorr ? (
                     <>
-                        <h1 className="modal-title text-5xl">Correct</h1>
-                        <BsCheckLg className="rotate-in-center text-8xl" />
-                        <div className='text-white text-2xl flex items-center gap-4'>
-                            <p>Answer Streak</p>
-                            <p className='rounded-full bg-[#603FC6] w-10 h-10 flex items-center justify-center'>{<CountUp duration={2} end={state.continousScore} />}</p>
-                        </div>
-                        <div className="bg-black/20 px-4 py-2 mt-4 w-80 text-3xl text-center font-bold">
-                            + {<CountUp duration={2} end={state.score} />}
+                        <div className="bg-black/20 px-4 py-1 w-80 text-3xl text-center font-bold">
+                            {
+                                state.answerStreak > 0 ? (
+                                    <p className='text-white text-2xl'>
+                                        Answer Streak {state.answerStreak}
+                                    </p>
+                                ) : (
+                                    <p className='text-white text-2xl'>
+                                        Correct
+                                    </p>
+                                )
+                            }
+                            <p>+ {toAddScore}</p>
                         </div>
                     </>
                 ) : (
                     <>
-                        <h1 className="rotate-in-center modal-title text-5xl">Incorrect</h1>
-                        <FaTimes className="rotate-in-center text-8xl" />
-                        <p className="text-white text-2xl">Answer Streak Lost</p>
-                        <div className="bg-black/20 px-4 py-2 mt-4 w-80 text-lg">
-                            <p className={`${state.choiceModal ? "line-1 anim-typewriter" : ""}`}>Keep Trying. Don't lost your hope.</p>
+                        <div className="bg-black/20 px-4 py-1 w-80 text-3xl text-center font-bold">
+                            <p className='text-white text-2xl'>
+                                Incorrect
+                            </p>
+                            <p className='text-white text-xl'>
+                                Answer Streak Lost
+                            </p>
                         </div>
                     </>
                 )

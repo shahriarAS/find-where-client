@@ -10,7 +10,7 @@ const initialState = {
     gameMode: "singleplayer",
     gameCode: "",
     score: 0,
-    continousScore: 0,
+    answerStreak: 0,
     opponentScore: 0,
     hintTook: 0,
     time: "init",
@@ -50,14 +50,14 @@ const useStore = create(set => ({
     setGameCode: (val) => set(state => ({
         gameCode: val
     })),
-    addScore: (val = 1) => set(state => ({
-        score: state.score + val
+    addScore: (val) => set(state => ({
+        score: state.score + parseInt(val)
     })),
-    addContinousScore: (val) => set(state => ({
-        continousScore: state.continousScore + val
+    addAnswerStreak: (val) => set(state => ({
+        answerStreak: state.answerStreak + val
     })),
-    resetContinousScore: () => set(state => ({
-        continousScore: 0
+    resetAnswerStreak: () => set(state => ({
+        answerStreak: 0
     })),
     addOpponentScore: () => set(state => ({
         opponentScore: state.opponentScore + 1

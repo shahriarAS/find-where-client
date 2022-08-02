@@ -45,7 +45,7 @@ function GameScreen() {
             randomNumList = randomNumList.slice(4)
         }
         state.setQuestionSet(questionSet)
-        questionSet && setLoading(false)
+        setLoading(false)
     }
 
 
