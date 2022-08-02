@@ -2,9 +2,8 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { GrClose } from "react-icons/gr";
 import useStore from "../../store";
-import generateRandomInRange from "../../utils/generateRandomInRange";
 
-function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuery }) {
+function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuery, gameName }) {
     const state = useStore((state) => state)
     const [gameCode, setGameCode] = useState(gameCodeQuery ? gameCodeQuery : "")
     const socket = useStore((state) => state.socket)
@@ -19,10 +18,9 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
     const joinGameClick = () => {
         if (gameCode.trim().length > 0) {
             state.setGameCode(gameCode)
-            const level = generateRandomInRange(1, 8)
-            state.setLevel(level)
-            console.log("Joining Game: ", level)
-            socket.emit("join-game", gameCode, state.username, level, joinResponse => {
+            gameName && state.setPlayBy(gameName)
+            console.log("Joining Game")
+            socket.emit("join-game", gameCode, state.username, joinResponse => {
                 joinResponse && toast.error(joinResponse)
             })
         } else {
@@ -32,7 +30,7 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
         }
     }
 
-    socket.on("other-joined", (msg, gameLevel) => {
+    socket.on("other-joined", (msg) => {
         setJoinMsg(msg)
         setStartGame(true)
         state.setGameMode("multiplayer")

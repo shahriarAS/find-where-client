@@ -6,6 +6,7 @@ import useStore from "../../store";
 function GameChoices({ choices, checkAnswer }) {
     const choiceRef = useRef("")
     const state = useStore((state) => state);
+    const socket = useStore((state) => state.socket)
     const [checkClass, setCheckClass] = useState("")
 
     const submitAnswer = (e, ans) => {

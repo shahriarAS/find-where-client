@@ -4,6 +4,7 @@ import globalVariable from "../../utils/globalVariable";
 
 function ChoiceModal() {
     const state = useStore((state) => state);
+    const socket = useStore((state) => state.socket)
     const [toAddScore, setToAddScore] = useState(0)
 
     useEffect(() => {
@@ -12,6 +13,11 @@ function ChoiceModal() {
             const score = (1 - ((state.time / globalVariable.maxTime) / 2)) * 1000
             state.addScore(score)
             setToAddScore(score)
+
+            if (state.gameMode == "multiplayer") {
+                console.log("Socket Emit Add: ")
+                socket.emit("add-score", state.gameCode, score)
+            }
         }
     }, [state.time]);
 

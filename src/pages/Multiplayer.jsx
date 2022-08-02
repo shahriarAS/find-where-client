@@ -9,6 +9,7 @@ import GameScreen from "./GameScreen";
 function Multiplayer() {
     let [searchParams, setSearchParams] = useSearchParams();
     let gameCodeQuery = searchParams.get("gameCode");
+    let gameName = searchParams.get("gameName");
     const state = useStore((state) => state)
     const [startGame, setStartGame] = useState(false);
     const [openHostModal, setOpenHostModal] = useState(false);
@@ -29,7 +30,7 @@ function Multiplayer() {
                         </div>
                     </div >
                     <HostModal openHostModal={openHostModal} setOpenHostModal={setOpenHostModal} setStartGame={setStartGame} />
-                    <JoinModal openJoinModal={openJoinModal} setOpenJoinModal={setOpenJoinModal} setStartGame={setStartGame} gameCodeQuery={gameCodeQuery} />
+                    <JoinModal openJoinModal={openJoinModal} setOpenJoinModal={setOpenJoinModal} setStartGame={setStartGame} gameCodeQuery={gameCodeQuery} gameName={gameName}/>
                 </>)
     );
 }

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { BiCoinStack } from "react-icons/bi";
 // import { BsClockHistory } from "react-icons/bs";
 import checkImg from "../../assets/images/check.png";
@@ -5,24 +6,35 @@ import crossImg from "../../assets/images/remove.png";
 import useStore from "../../store";
 
 function GameStat() {
+    const [opponentScore, setAddOpponentScore] = useState(0)
     const state = useStore((state) => state);
+    const socket = useStore((state) => state.socket)
+
+    useEffect(() => {
+        if (state.gameMode == "multiplayer") {
+            console.log("Show-Score")
+            socket.on("show-score", (score) => {
+                setAddOpponentScore(prevState => prevState + score)
+            })
+        }
+    }, [state.gameMode, socket]);
 
     return (
         <div className="stats w-full h-[9vh] bg-gradient-to-r from-[#363636] to-[#161616] relative flex justify-between items-center text-white px-2">
-            {/* <div className="time text-4xl flex items-center justify-between gap-2">
-                <BsClockHistory />
-                <p className="time-value">3:10</p>
-            </div> */}
+            <div className="score text-4xl flex items-center justify-between gap-2">
+                <p className="score-value">{opponentScore}</p>
+                <BiCoinStack />
+            </div>
             <div className="question-stats text-4xl flex items-center justify-center gap-16 w-full px-8">
                 <div className="correct-q flex items-center gap-2">
                     <p className="correct-value">{state.correctCount}</p>
                     <img src={checkImg} alt="Correct" className="w-8" />
                 </div>
                 <div className="q-left flex items-center justify-between gap-4 text-2xl">
-                    <p className="current-q">{state.questionNumber+1}</p>
+                    <p className="current-q">{state.questionNumber + 1}</p>
                     <div className="q-progress">
                         <div className="w-56 bg-gray-200 h-2.5">
-                            <div className="bg-blue-600 h-2.5" style={{ "width": `${(100 / state.questionSet.length) * (state.questionNumber+1)}%` }}></div>
+                            <div className="bg-blue-600 h-2.5" style={{ "width": `${(100 / state.questionSet.length) * (state.questionNumber + 1)}%` }}></div>
                         </div>
 
                     </div>

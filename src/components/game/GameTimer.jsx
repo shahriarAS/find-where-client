@@ -6,6 +6,7 @@ import globalVariable from "../../utils/globalVariable";
 function GameTimer() {
     var time = new Date();
     const state = useStore((state) => state)
+    const socket = useStore((state) => state.socket)
 
     const {
         seconds,
@@ -35,10 +36,17 @@ function GameTimer() {
             var time = new Date();
             restart(time.setSeconds(time.getSeconds() + (globalVariable?.maxTime)), true)
         }
+
         if (state.gamePause == true || state.gameOver == true || state.gameStart == true || state.choiceModal == true) {
             const toShowTime = (globalVariable.maxTime - seconds)
             state.setTime(toShowTime)
             pause()
+
+            if (state.gameOver == true & state.gameMode == "multiplayer") {
+                console.log("Emit Game Over")
+                socket.emit("game-over", state.gameCode)
+            }
+
         } else if (state.gamePause != true & state.gameOver != true & state.gameStart != true & state.choiceModal != true) {
             resume()
             console.log("Now Resume")

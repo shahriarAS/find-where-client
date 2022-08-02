@@ -8,7 +8,7 @@ function HostModal({ openHostModal, setOpenHostModal, setStartGame }) {
     const state = useStore((state) => state)
     const socket = useStore((state) => state.socket)
     const [gameCode, setGameCode] = useState(generateRandom())
-    const [gameURL, setGameURL] = useState(`${import.meta.env.VITE_CLIENT_URL}/multiplayer/?gameCode=${gameCode}`)
+    const [gameURL, setGameURL] = useState(`${import.meta.env.VITE_CLIENT_URL}/multiplayer/?gameCode=${gameCode}&gameName=${state.playBy}`)
     const [hostMsg, setHostMsg] = useState()
 
     const copyGameCodeOnClick = (codeType) => {
@@ -40,10 +40,9 @@ function HostModal({ openHostModal, setOpenHostModal, setStartGame }) {
         }
     }
 
-    socket.on("other-joined", (msg, gameLevel) => {
+    socket.on("other-joined", (msg) => {
         setHostMsg(msg)
-        state.setLevel(gameLevel)
-        console.log("Joining Game: ", gameLevel)
+        console.log("Joining Game: ")
         setStartGame(true)
     })
 
