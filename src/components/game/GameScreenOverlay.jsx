@@ -1,11 +1,12 @@
 import helpImg from "../../assets/images/help.png";
 import powerImg from "../../assets/images/power.png";
-import scoreBadge from "../../assets/images/score-badge.png";
 // import timeBadge from "../../assets/images/time-badge.png";
 import zoomInImg from "../../assets/images/zoom-in.png";
 import zoomOutImg from "../../assets/images/zoom-out.png";
+import useStore from "../../store";
 
 function GameScreenOverlay() {
+    const state = useStore((state) => state)
     return (
         <>
             <div className="power-div z-10 absolute inset-0 w-24 cursor-pointer">
@@ -18,9 +19,11 @@ function GameScreenOverlay() {
                 <img src={zoomInImg} alt="Zoom In" className="cursor-pointer" />
                 <img src={zoomOutImg} alt="Zoom Out" className="cursor-pointer" />
             </div>
-            <div className="gameBadge absolute bottom-0 w-full h-[6vh] flex justify-end">
-                {/* <img src={timeBadge} alt="Time" /> */}
-                <img src={scoreBadge} alt="Score" />
+            <div className={`gameBadge absolute bottom-0 w-full flex ${state.gameMode == "multiplayer" ? "justify-between" : "justify-end"} text-white text-2xl font-bold`}>
+                {state.gameMode == "multiplayer" ? (
+                    <div className="w-56 h-10 flex items-center justify-start p-2 bg-gradient-to-r from-[#fc221d] to-[#aa00fa]" style={{ clipPath: "polygon(0 1%, 85% 0, 100% 100%, 0% 100%)" }}>Opponent Score</div>
+                ) : null}
+                <div className="w-44 h-10 flex items-center justify-end p-2 bg-gradient-to-r from-[#fc221d] to-[#aa00fa]" style={{ clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0% 100%)" }}>Your Score</div>
             </div>
         </>
     );

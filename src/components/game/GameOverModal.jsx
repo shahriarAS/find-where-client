@@ -9,7 +9,7 @@ function GameOverModal() {
         const data = {
             score: state.score,
             correct: state.correctCount,
-            Incorrect: state.inCorrectCount
+            Incorrect: state.incorrectCount
         }
         console.log(data)
     }
@@ -25,8 +25,8 @@ function GameOverModal() {
             </div>
             <p className="text-xl">Score: {state.score}</p>
             <p className="text-xl">Correct: {state.correctCount}</p>
-            <p className="text-xl">Incorrcet: {state.inCorrectCount}</p>
-
+            <p className="text-xl">Incorrcet: {state.incorrectCount}</p>
+            <div className="border-2 w-32 h-8 bg-red-500" style={{ clipPath: "polygon(0 1%, 76% 0, 100% 100%, 0% 100%)" }}></div>
             <Link to="/">Home</Link>
         </div >
     );
