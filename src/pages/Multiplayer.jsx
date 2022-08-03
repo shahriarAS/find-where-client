@@ -23,6 +23,8 @@ function Multiplayer() {
         } else if (gameName) {
             state.setPlayBy(gameName)
         }
+
+        state.setGameMode("multiplayer")
     }, []);
 
     return (

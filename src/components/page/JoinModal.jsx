@@ -42,7 +42,6 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
     socket.on("other-joined", (msg) => {
         setJoinMsg(msg)
         setStartGame(true)
-        state.setGameMode("multiplayer")
     })
 
     const generateQuestion = async () => {
