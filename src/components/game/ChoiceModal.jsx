@@ -8,17 +8,19 @@ function ChoiceModal() {
     const [toAddScore, setToAddScore] = useState(0)
 
     useEffect(() => {
-        if (state.time > 0 && state.isQuesCorr) {
-            // Scoring Formula From Kahoots
-            const score = (1 - ((state.time / globalVariable.maxTime) / 2)) * 1000
-            state.addScore(score)
-            setToAddScore(score)
+        setTimeout(function () {
+            if (state.time > 0 && state.isQuesCorr) {
+                // Scoring Formula From Kahoots
+                const score = (1 - ((state.time / globalVariable.maxTime) / 2)) * 1000
+                state.addScore(score)
+                setToAddScore(score)
 
-            if (state.gameMode == "multiplayer") {
-                console.log("Socket Emit Add: ")
-                socket.emit("add-score", state.gameCode, score)
+                if (state.gameMode == "multiplayer") {
+                    console.log("Socket Emit Add: ")
+                    socket.emit("add-score", state.gameCode, score)
+                }
             }
-        }
+        }, 500);
     }, [state.time]);
 
 

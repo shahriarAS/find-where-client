@@ -21,10 +21,14 @@ function GameStat() {
 
     return (
         <div className="stats w-full h-[9vh] bg-gradient-to-r from-[#363636] to-[#161616] relative flex justify-between items-center text-white px-2">
-            <div className="score text-4xl flex items-center justify-between gap-2">
-                <p className="score-value">{opponentScore}</p>
-                <BiCoinStack />
-            </div>
+            {
+                state.gameMode == "multiplayer" ? (
+                    <div className="score text-4xl flex items-center justify-between gap-2">
+                        <p className="score-value">{opponentScore}</p>
+                        <BiCoinStack />
+                    </div>
+                ) : null
+            }
             <div className="question-stats text-4xl flex items-center justify-center gap-16 w-full px-8">
                 <div className="correct-q flex items-center gap-2">
                     <p className="correct-value">{state.correctCount}</p>

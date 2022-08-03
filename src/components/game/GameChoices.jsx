@@ -48,9 +48,7 @@ function GameChoices({ choices, checkAnswer }) {
 
         setTimeout(function () {
             addSign()
-            setTimeout(function () {
-                scoring()
-            }, 500);
+            scoring()
         }, 500);
     }
 
