@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BiCoinStack } from "react-icons/bi";
 // import { BsClockHistory } from "react-icons/bs";
 import checkImg from "../../assets/images/check.png";
@@ -6,7 +6,6 @@ import crossImg from "../../assets/images/remove.png";
 import useStore from "../../store";
 
 function GameStat() {
-    const [opponentScore, setAddOpponentScore] = useState(0)
     const state = useStore((state) => state);
     const socket = useStore((state) => state.socket)
 
@@ -14,7 +13,7 @@ function GameStat() {
         if (state.gameMode == "multiplayer") {
             console.log("Show-Score")
             socket.on("show-score", (score) => {
-                setAddOpponentScore(prevState => prevState + score)
+                state.addOpponentScore(score)
             })
         }
     }, [state.gameMode, socket]);
@@ -24,7 +23,7 @@ function GameStat() {
             {
                 state.gameMode == "multiplayer" ? (
                     <div className="score text-4xl flex items-center justify-between gap-2">
-                        <p className="score-value">{opponentScore}</p>
+                        <p className="score-value">{state.opponentScore}</p>
                         <BiCoinStack />
                     </div>
                 ) : null

@@ -60,8 +60,8 @@ const useStore = create(set => ({
     resetAnswerStreak: () => set(state => ({
         answerStreak: 0
     })),
-    addOpponentScore: () => set(state => ({
-        opponentScore: state.opponentScore + 1
+    addOpponentScore: (val) => set(state => ({
+        opponentScore: state.opponentScore + val
     })),
     addHintTook: () => set(state => ({
         hintTook: state.hintTook + 1

@@ -1,13 +1,16 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from "react-hot-toast";
 import { GrClose } from "react-icons/gr";
 import { countries, usState } from "../../assets/data/data";
 import Loading from "../../components/root/Loading";
+import { auth } from "../../config/firebaseConfig";
 import useStore from "../../store";
 import uniqueRandomNumList from "../../utils/uniqueRandomNumList";
 
 function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuery, gameName }) {
+    const [user, authLoading, error] = useAuthState(auth);
     const state = useStore((state) => state)
     const [gameCode, setGameCode] = useState(gameCodeQuery ? gameCodeQuery : "")
     const socket = useStore((state) => state.socket)
@@ -22,29 +25,8 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
         }
     }
 
-    const joinGameClick = () => {
-        if (gameCode.trim().length > 0) {
-            state.setGameCode(gameCode)
-            gameName && state.setPlayBy(gameName)
-            console.log(gameName)
-            console.log("Joining Game")
-            socket.emit("join-game", gameCode, state.username, state.questionSet, joinResponse => {
-                joinResponse && toast.error(joinResponse)
-            })
-            console.log(state.questionSet)
-        } else {
-            toast.error("Empty Game Code. Please provide valid code.", {
-                duration: 800
-            })
-        }
-    }
-
-    socket.on("other-joined", (msg) => {
-        setJoinMsg(msg)
-        setStartGame(true)
-    })
-
     const generateQuestion = async () => {
+        console.log("Generating Questions.... ")
         const nameKey = state.playBy.toLowerCase() == "country" ? "ADMIN" : "name"
         const locationData = state.playBy.toLowerCase() == "country" ? countries : state.playBy.toLowerCase() == "state" ? usState : countries
 
@@ -75,20 +57,42 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
         setLoading(false)
     }
 
-
-    const submitGameSetting = () => {
-        console.log("In SUbmit")
-        setLoading(true)
-        generateQuestion()
+    const joinGameClick = async () => {
+        if (gameCode.trim().length > 0) {
+            state.setGameCode(gameCode)
+            // state.playBy == "" && state.setPlayBy(gameName)
+            setLoading(true)
+            await generateQuestion()
+            console.log("Joining Game: Join")
+            socket.emit("join-game", gameCode, state.username, questionSet, joinResponse => {
+                joinResponse && toast.error(joinResponse)
+            })
+        } else {
+            toast.error("Empty Game Code. Please provide valid code.", {
+                duration: 800
+            })
+        }
     }
 
-    useEffect(() => {
-        if (openJoinModal == true && state.playBy) {
-            submitGameSetting()
-        }
+    socket.on("other-joined", (msg) => {
+        setJoinMsg(msg)
+        setStartGame(true)
+    })
 
-        // state.playBy ? submitGameSetting() : null
-    }, [state.gameMode, openJoinModal, state.playBy]);
+
+    // const submitGameSetting = () => {
+    //     console.log("In SUbmit")
+    //     setLoading(true)
+    //     generateQuestion()
+    // }
+
+    // useEffect(() => {
+    //     if (openJoinModal && state.playBy && user && state.questionSet.length == 0) {
+    //         submitGameSetting()
+    //     }
+
+    //     // state.playBy ? submitGameSetting() : null
+    // }, [state.playBy, user]);
 
     return (
         loading ? (<Loading msg={"Creating Your Question..."} />) :

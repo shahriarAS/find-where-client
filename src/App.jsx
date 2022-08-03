@@ -37,7 +37,6 @@ function App() {
       state.resetState({
         username: data.username,
         highScore: data.highScore,
-        bestTime: data.bestTime,
         isSound: data.settings.isSound,
         isMusic: data.settings.isMusic,
         difficulty: data.settings.difficulty

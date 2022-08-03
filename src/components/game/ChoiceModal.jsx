@@ -11,7 +11,7 @@ function ChoiceModal() {
         setTimeout(function () {
             if (state.time > 0 && state.isQuesCorr) {
                 // Scoring Formula From Kahoots
-                const score = (1 - ((state.time / globalVariable.maxTime) / 2)) * 1000
+                const score = parseInt((1 - ((state.time / globalVariable.maxTime) / 2)) * (1000 + (state.answerStreak * 100)))
                 state.addScore(score)
                 setToAddScore(score)
 
@@ -33,7 +33,7 @@ function ChoiceModal() {
                             {
                                 state.answerStreak > 0 ? (
                                     <p className='text-white text-2xl'>
-                                        Answer Streak {state.answerStreak}
+                                        Answer Streak {state.answerStreak} (+ {state.answerStreak * 100})
                                     </p>
                                 ) : (
                                     <p className='text-white text-2xl'>

@@ -44,7 +44,6 @@ function HostModal({ openHostModal, setOpenHostModal, setStartGame }) {
         setHostMsg(msg)
         console.log("Joining Game: Host")
         state.setQuestionSet(questionSet)
-        console.log(questionSet)
         setStartGame(true)
     })
 
