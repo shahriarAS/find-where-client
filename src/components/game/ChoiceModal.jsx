@@ -8,7 +8,7 @@ function ChoiceModal() {
     const [toAddScore, setToAddScore] = useState(0)
 
     useEffect(() => {
-        if (state.time > 0 & state.isQuesCorr) {
+        if (state.time > 0 && state.isQuesCorr) {
             // Scoring Formula From Kahoots
             const score = (1 - ((state.time / globalVariable.maxTime) / 2)) * 1000
             state.addScore(score)

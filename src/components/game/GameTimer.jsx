@@ -42,12 +42,12 @@ function GameTimer() {
             state.setTime(toShowTime)
             pause()
 
-            if (state.gameOver == true & state.gameMode == "multiplayer") {
+            if (state.gameOver == true && state.gameMode == "multiplayer") {
                 console.log("Emit Game Over")
                 socket.emit("game-over", state.gameCode)
             }
 
-        } else if (state.gamePause != true & state.gameOver != true & state.gameStart != true & state.choiceModal != true) {
+        } else if (state.gamePause != true && state.gameOver != true && state.gameStart != true && state.choiceModal != true) {
             resume()
             console.log("Now Resume")
         }

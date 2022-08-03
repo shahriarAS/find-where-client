@@ -39,7 +39,8 @@ const initialState = {
     incorrectCount: 0,
     updateQ: "init",
     choiceModal: false,
-    isQuesCorr: "init"
+    isQuesCorr: "init",
+    zoom: 6,
 }
 
 const useStore = create(set => ({
@@ -182,6 +183,11 @@ const useStore = create(set => ({
     setIsQuesCorr: (val) => set((state) => (
         {
             isQuesCorr: val
+        }
+    )),
+    setZoom: (val) => set((state) => (
+        {
+            zoom: state.zoom + val
         }
     )),
     resetState: (val = null) => set(state => (

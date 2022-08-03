@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GeoJSON, MapContainer } from "react-leaflet";
+import { GeoJSON, MapContainer, ZoomControl } from "react-leaflet";
 import { countries, usState } from "../../assets/data/data";
 import useStore from "../../store";
 import Loading from "../root/Loading";
@@ -31,23 +31,27 @@ function GameMap() {
         setLoading(true)
         state.setChoices()
         state.setTargetCity()
-        console.log(state.targetCity)
         setLoading(false)
+        console.log(state.questionSet)
     }, [state.answer]);
 
 
 
     return (
-        <div className="w-full h-full bg-white overflow-hidden">
+        <div className="w-full h-full bg-white overflow-hidden relative -z-20">
             {
                 loading ? (<Loading />) :
-                    <MapContainer key={targetCity.latLang} style={{ height: "100%", width: "100%" }} zoom={6} maxZoom={12} center={targetCity.latLang} zoomControl={false}>
+                    <MapContainer key={targetCity.latLang} style={{ height: "100%", width: "100%" }} zoom={state.zoom} maxZoom={12} center={targetCity.latLang} zoomControl={false}>
                         <GeoJSON
                             key={targetCity.latLang}
                             style={locationStyle}
                             data={locationData.features}
                             onEachFeature={onEachlocation}
                         />
+                        {/* <Control prepend position='topright'>
+                            <button>COntrol</button>
+                        </Control> */}
+                        <ZoomControl position="bottomright" style={{marginBottom: "50px !important"}}/>
                     </MapContainer>
             }
         </div>

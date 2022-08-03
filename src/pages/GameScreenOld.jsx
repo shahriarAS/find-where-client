@@ -52,7 +52,7 @@ function GameScreen() {
             let isBreak = false
             gameScreenNode.forEach(node => {
                 console.log(node)
-                if (state.showHint & state.targetItems[`level${state.level}`].map(i => i.file).includes(node.id) & isBreak == false) {
+                if (state.showHint && state.targetItems[`level${state.level}`].map(i => i.file).includes(node.id) && isBreak == false) {
                     node.classList.add("border-8", "border-red-500", "rounded-full", "jello-horizontal")
                     setTimeout(function () {
                         node.classList.remove("border-8", "border-red-500", "rounded-full", "jello-horizontal")
@@ -69,7 +69,7 @@ function GameScreen() {
     }
 
     useEffect(() => {
-        if (state.gameStart == "init" & state.gameMode == "singleplayer") {
+        if (state.gameStart == "init" && state.gameMode == "singleplayer") {
             console.log("Game Start")
             state.setGameStart(true)
         }

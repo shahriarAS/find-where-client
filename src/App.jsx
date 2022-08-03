@@ -78,7 +78,7 @@ function App() {
           <Route exact path="/singleplay" element={
             <GameScreen />
           } />
-          <Route path="/multiplayer" element={
+          <Route path="/multiplayer/" element={
             user ? <Multiplayer /> : <Layout childComp={<Login />} />
           } />
           {/* <Route path="/new" element={

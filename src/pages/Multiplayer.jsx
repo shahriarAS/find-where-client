@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import greyMap from "../assets/images/Page/Leaderboard/grey-map.png";
 import HostModal from "../components/page/HostModal";
 import JoinModal from "../components/page/JoinModal";
@@ -7,6 +7,7 @@ import useStore from "../store";
 import GameScreen from "./GameScreen";
 
 function Multiplayer() {
+    let navigate = useNavigate();
     let [searchParams, setSearchParams] = useSearchParams();
     let gameCodeQuery = searchParams.get("gameCode");
     let gameName = searchParams.get("gameName");
@@ -14,6 +15,15 @@ function Multiplayer() {
     const [startGame, setStartGame] = useState(false);
     const [openHostModal, setOpenHostModal] = useState(false);
     const [openJoinModal, setOpenJoinModal] = useState(gameCodeQuery ? true : false);
+
+    useEffect(() => {
+        console.log(state.playBy, " - ", gameName, " - ")
+        if (state.playBy == "" && !gameName) {
+            navigate("/", { replace: false })
+        } else if (gameName) {
+            state.setPlayBy(gameName)
+        }
+    }, []);
 
     return (
         startGame ?
@@ -30,7 +40,7 @@ function Multiplayer() {
                         </div>
                     </div >
                     <HostModal openHostModal={openHostModal} setOpenHostModal={setOpenHostModal} setStartGame={setStartGame} />
-                    <JoinModal openJoinModal={openJoinModal} setOpenJoinModal={setOpenJoinModal} setStartGame={setStartGame} gameCodeQuery={gameCodeQuery} gameName={gameName}/>
+                    <JoinModal openJoinModal={openJoinModal} setOpenJoinModal={setOpenJoinModal} setStartGame={setStartGame} gameCodeQuery={gameCodeQuery} gameName={gameName} />
                 </>)
     );
 }

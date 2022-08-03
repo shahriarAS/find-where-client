@@ -56,16 +56,16 @@ function GameScreen() {
     }
 
     useEffect(() => {
-        submitGameSetting()
-    }, []);
+        state.gameMode == "singleplayer" ? submitGameSetting() : setLoading(false)
+    }, [state.gameMode]);
 
 
 
     return (
         loading ? (<Loading msg={"Creating Your Question..."} />) :
-            <div div className={`gameScreen overflow-hidden relative w-full h-screen m-auto flex flex-col font-Saira ${state.choiceModal ? "pointer-events-none" : ""}`}>
-                <img src={gameScreenBG} alt="Game Screen BG" className="absolute w-full h-screen -z-50" />
-                <div className="gameArea w-full h-[70vh] relative">
+            <div className={`gameScreen overflow-hidden relative w-full h-screen m-auto flex flex-col font-Saira ${state.choiceModal ? "pointer-events-none" : ""}`}>
+                <img src={gameScreenBG} alt="Game Screen BG" className="absolute w-full h-screen -z-10" />
+                <div className="gameArea w-full h-[70vh] relative z-10">
                     <GameMap />
                     <GameScreenOverlay />
                     <GameTimer />

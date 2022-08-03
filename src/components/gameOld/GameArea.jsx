@@ -71,7 +71,7 @@ function GameArea() {
         var levelList = [];
         for (let i = 0, j = 3; i < j; i++) {
             let randNumber = Math.round(Math.random() * state.maxLevel)
-            if (!levelList.includes(randNumber) & randNumber > 0) {
+            if (!levelList.includes(randNumber) && randNumber > 0) {
                 levelList.push(randNumber)
             } else {
                 i--

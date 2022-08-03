@@ -58,7 +58,7 @@ function GameOverModal() {
 
 
     useEffect(() => {
-        if (state.gameOver != true & state.targetItems[`level${state.level}`].length == 0) {
+        if (state.gameOver != true && state.targetItems[`level${state.level}`].length == 0) {
             // When Every target items are finished.
             state.setGameOver(true)
 
@@ -94,7 +94,7 @@ function GameOverModal() {
 
                     state.time != "init" ? updateSingledDoc() : null
 
-                    if (state.level != state.maxLevel & state.score >= globalVariable.maxScore) {
+                    if (state.level != state.maxLevel && state.score >= globalVariable.maxScore) {
                         const updateLeveldDoc = async () => {
                             await updateDoc(gamePlayedRef, {
                                 level: increment(1)
@@ -103,12 +103,12 @@ function GameOverModal() {
                         state.time != "init" ? updateLeveldDoc() : null
                     }
 
-                    if (state.level != state.maxLevel & state.score >= globalVariable.maxScore) {
+                    if (state.level != state.maxLevel && state.score >= globalVariable.maxScore) {
                         localStorage.setItem("gameLevel", parseInt(state.level) + 1)
                         // state.addLevel()
                     }
                 } else {
-                    if (state.level != state.maxLevel & state.score >= globalVariable.maxScore) {
+                    if (state.level != state.maxLevel && state.score >= globalVariable.maxScore) {
                         localStorage.setItem("gameLevel", parseInt(state.level) + 1)
                         // state.addLevel()
                     }
@@ -200,7 +200,7 @@ function GameOverModal() {
                                 </button>) : null
                             }
                             {
-                                (state.level != state.maxLevel & state.score >= globalVariable.maxScore) ? (<button type="button" onClick={goNextLevel} className="text-gray-900 bg-gray-200 border border-gray-300 hover:bg-gray-100 font-medium rounded-lg px-4 py-2 mb-2 text-xl">
+                                (state.level != state.maxLevel && state.score >= globalVariable.maxScore) ? (<button type="button" onClick={goNextLevel} className="text-gray-900 bg-gray-200 border border-gray-300 hover:bg-gray-100 font-medium rounded-lg px-4 py-2 mb-2 text-xl">
                                     Next Level
                                 </button>) : null
                             }

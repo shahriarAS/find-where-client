@@ -3,6 +3,11 @@
     url("./assets/images/Page//Homepage/17.png");
 }
 
+.leaflet-control-container .leaflet-bottom {
+  margin-bottom: 60px !important;
+  margin-right: 10px !important;
+}
+
 /* Animation CSS */
 
 /* ----------------------------------------------

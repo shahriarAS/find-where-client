@@ -12,7 +12,7 @@ function Footer() {
             </div>
             <div className="right-nav flex justify-between items-center gap-8 font-bold text-sm">
                 <Link to="/page/about">About</Link>
-                <Link to="/page/terms-condition">Terms & Condition</Link>
+                <Link to="/page/terms-condition">Terms && Condition</Link>
                 <Link to="/page/privacy-policy">Privacy Policy</Link>
             </div>
         </footer>

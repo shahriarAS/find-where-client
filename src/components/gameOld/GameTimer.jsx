@@ -33,7 +33,7 @@ const GameTimer = () => {
                 socket.emit("game-over", state.gameCode, `${toShowTime}`)
             }
             console.log("Now Pause")
-        } else if (state.gamePause != true & state.gameOver != true & state.gameBonus != true & state.gameStart != true) {
+        } else if (state.gamePause != true && state.gameOver != true && state.gameBonus != true && state.gameStart != true) {
             resume()
             console.log("Now Resume")
         }
