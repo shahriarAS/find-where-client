@@ -1,4 +1,3 @@
-import helpImg from "../../assets/images/help.png";
 import powerImg from "../../assets/images/power.png";
 import useStore from "../../store";
 
@@ -9,9 +8,9 @@ function GameScreenOverlay() {
             <div className="power-div z-10 absolute inset-0 w-24 cursor-pointer">
                 <img src={powerImg} alt="Power" className="w-full" />
             </div>
-            <div className="help-div z-10 absolute right-4 top-4 w-12 cursor-pointer">
+            {/* <div className="help-div z-10 absolute right-4 top-4 w-12 cursor-pointer">
                 <img src={helpImg} alt="help" className="w-full" />
-            </div>
+            </div> */}
             {/* <div className="zoom-div z-10 absolute right-4 bottom-16 w-10 flex flex-col items-center gap-2">
                 <img onClick={() => state.setZoom(1)} src={zoomInImg} alt="Zoom In" className="cursor-pointer" />
                 <img onClick={() => state.setZoom(-1)} src={zoomOutImg} alt="Zoom Out" className="cursor-pointer" />
