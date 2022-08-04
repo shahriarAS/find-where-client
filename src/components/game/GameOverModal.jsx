@@ -47,18 +47,11 @@ function GameOverModal() {
     }, [state.gameOver]);
 
     return (
-        <div className={`absolute z-50 transition-all duration-500 ${state.gameOver == true ? "top-0" : "-top-[100%]"} w-full h-full py-8 bg-gradient-to-r from-[#355C7D] to-[#C06C84] flex items-center justify-around font-Saira`}>
-            <Confetti
-                width={window.innerWidth}
-                height={window.innerHeight}
-                numberOfPieces={300}
-            />
-            {
-                (state.gameMode == "singleplayer") ?
-                    <SinglePlayerGameOver /> : <MultiPlayerGameOver />
 
-            }
-        </div>
+        (state.gameMode == "singleplayer") ?
+            <SinglePlayerGameOver /> : <MultiPlayerGameOver />
+
+
     );
 }
 

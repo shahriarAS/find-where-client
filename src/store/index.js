@@ -67,7 +67,7 @@ const useStore = create(set => ({
         opponentScore: state.opponentScore + val
     })),
     addOpponentCorrect: (val) => set(state => ({
-        opponentCorrect: opponentCorrect + val
+        opponentCorrect: state.opponentCorrect + val
     })),
     addOpponentIncorrect: (val) => set(state => ({
         opponentIncorrect: state.opponentIncorrect + val
