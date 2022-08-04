@@ -1,10 +1,12 @@
 import { doc, increment, updateDoc } from "firebase/firestore";
 import { useEffect } from "react";
+import Confetti from "react-confetti";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from "react-router-dom";
 import { auth, db } from "../../config/firebaseConfig";
 import useStore from "../../store";
 import generateRandom from "../../utils/generateRandom";
+import MultiPlayerGameOver from "./MultiPlayerGameOver";
+import SinglePlayerGameOver from "./SinglePlayerGameOver";
 
 function GameOverModal() {
     const [user, loading, error] = useAuthState(auth);
@@ -45,15 +47,18 @@ function GameOverModal() {
     }, [state.gameOver]);
 
     return (
-        <div className={`choiceModal absolute z-50 transition-all duration-500 ${state.gameOver == true ? "top-0" : "-top-[100%]"} bg-green-400 w-full h-full py-4 text-white font-Saira flex flex-col items-center justify-center`}>
-            <div className="bg-black/20 px-4 py-1 w-80 text-3xl text-center font-bold">
-                <h1 className="text-2xl text-white">Game Over</h1>
-            </div>
-            <p className="text-xl">Score: {state.score}</p>
-            <p className="text-xl">Correct: {state.correctCount}</p>
-            <p className="text-xl">Incorrcet: {state.incorrectCount}</p>
-            <Link to="/">Home</Link>
-        </div >
+        <div className={`absolute z-50 transition-all duration-500 ${state.gameOver == true ? "top-0" : "-top-[100%]"} w-full h-full py-8 bg-gradient-to-r from-[#355C7D] to-[#C06C84] flex items-center justify-around font-Saira`}>
+            <Confetti
+                width={window.innerWidth}
+                height={window.innerHeight}
+                numberOfPieces={300}
+            />
+            {
+                (state.gameMode == "singleplayer") ?
+                    <SinglePlayerGameOver /> : <MultiPlayerGameOver />
+
+            }
+        </div>
     );
 }
 

@@ -17,7 +17,8 @@ function ChoiceModal() {
 
                 if (state.gameMode == "multiplayer") {
                     console.log("Socket Emit Add: ")
-                    socket.emit("add-score", state.gameCode, score)
+                    console.log(score, state.isQuesCorr ? 1 : 0, state.highScore)
+                    socket.emit("add-score", state.gameCode, score, state.isQuesCorr ? 1 : 0, state.highScore)
                 }
             }
         }, 500);

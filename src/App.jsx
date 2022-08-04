@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import MultiplayerGameOver from "./components/game/MultiPlayerGameOver";
 import Layout from './components/root/Layout';
 import Loading from "./components/root/Loading";
 import { auth, db } from './config/firebaseConfig.js';
@@ -35,6 +36,13 @@ function App() {
     if (docSnap.exists()) {
       const data = docSnap.data()
       state.resetState({
+        username: data.username,
+        highScore: data.highScore,
+        isSound: data.settings.isSound,
+        isMusic: data.settings.isMusic,
+        difficulty: data.settings.difficulty
+      })
+      console.log({
         username: data.username,
         highScore: data.highScore,
         isSound: data.settings.isSound,
@@ -106,6 +114,9 @@ function App() {
           } />
           <Route path="/page/privacy-policy" element={
             <Layout childComp={<PrivacyPolicy />} />
+          } />
+          <Route path="/over" element={
+            <MultiplayerGameOver />
           } />
           <Route path="*" element={
             <Layout childComp={<h1>404 Not Found</h1>} />

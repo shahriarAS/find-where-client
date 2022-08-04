@@ -12,8 +12,11 @@ function GameStat() {
     useEffect(() => {
         if (state.gameMode == "multiplayer") {
             console.log("Show-Score")
-            socket.on("show-score", (score) => {
+            socket.on("show-score", (score, opponentCorrect, opponentIncorrect, opponentHighScore) => {
+                console.log(score, opponentCorrect, opponentHighScore)
                 state.addOpponentScore(score)
+                state.addOpponentCorrect(opponentCorrect)
+                state.addOpponentHighScore(opponentHighScore)
             })
         }
     }, [state.gameMode, socket]);

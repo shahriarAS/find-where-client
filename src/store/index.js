@@ -12,6 +12,9 @@ const initialState = {
     score: 0,
     answerStreak: 0,
     opponentScore: 0,
+    opponentCorrect: 0,
+    opponentIncorrect: 0,
+    opponentHighScore: 0,
     hintTook: 0,
     time: "init",
     highScore: 0,
@@ -62,6 +65,15 @@ const useStore = create(set => ({
     })),
     addOpponentScore: (val) => set(state => ({
         opponentScore: state.opponentScore + val
+    })),
+    addOpponentCorrect: (val) => set(state => ({
+        opponentCorrect: opponentCorrect + val
+    })),
+    addOpponentIncorrect: (val) => set(state => ({
+        opponentIncorrect: state.opponentIncorrect + val
+    })),
+    addOpponentHighScore: (val) => set(state => ({
+        opponentHighScore: state.opponentHighScore + val
     })),
     addHintTook: () => set(state => ({
         hintTook: state.hintTook + 1

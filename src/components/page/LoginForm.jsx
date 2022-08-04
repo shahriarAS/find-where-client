@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaLock, FaRegEnvelope, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import FormDiv from "../../components/page/FormDiv";
 import { auth, db } from "../../config/firebaseConfig";
 import useResetState from "../../hooks/useResetState";
@@ -16,6 +16,7 @@ function LoginForm({ loading, setLoading }) {
     const [showPass, setShowPass] = useState(false)
     const state = useStore((state) => state)
     const resetState = useResetState()
+    let navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => {
@@ -33,12 +34,12 @@ function LoginForm({ loading, setLoading }) {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
                 }
-                setLoading(false)
                 toast.success("Successfully Logged In.")
                 resetState()
+                // navigate("/")
+                setLoading(false)
             })
             .catch((error) => {
-                setLoading(false)
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(error)

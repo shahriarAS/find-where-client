@@ -25,7 +25,7 @@ function Multiplayer() {
         }
 
         state.setGameMode("multiplayer")
-    }, []);
+    }, [state.playBy, gameName, state.gameMode]);
 
     return (
         startGame ?

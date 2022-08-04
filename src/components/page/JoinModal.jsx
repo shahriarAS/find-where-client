@@ -29,6 +29,7 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
         console.log("Generating Questions.... ")
         const nameKey = state.playBy.toLowerCase() == "country" ? "ADMIN" : "name"
         const locationData = state.playBy.toLowerCase() == "country" ? countries : state.playBy.toLowerCase() == "state" ? usState : countries
+        console.log("NameKey: ", nameKey, state.playBy)
 
         let randomNumList = uniqueRandomNumList(locationData.features.length - 4, (locationData.features.length > 40 ? 40 : locationData.features.length > 20 ? 20 : 8))
 
@@ -58,7 +59,13 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
     }
 
     const joinGameClick = async () => {
-        if (gameCode.trim().length > 0) {
+        if (gameCode.trim().length < 0) {
+            toast.error("Empty Game Code. Please provide valid code.", {
+                duration: 800
+            })
+
+        } else if (user && openJoinModal && state.playBy && state.gameMode == "multiplayer") {
+            console.log()
             state.setGameCode(gameCode)
             // state.playBy == "" && state.setPlayBy(gameName)
             setLoading(true)
@@ -67,8 +74,9 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
             socket.emit("join-game", gameCode, state.username, questionSet, joinResponse => {
                 joinResponse && toast.error(joinResponse)
             })
-        } else {
-            toast.error("Empty Game Code. Please provide valid code.", {
+        }
+        else {
+            toast.error("Please Try Again.", {
                 duration: 800
             })
         }

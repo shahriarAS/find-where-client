@@ -40,11 +40,15 @@ function HostModal({ openHostModal, setOpenHostModal, setStartGame }) {
         }
     }
 
-    socket.on("other-joined", (msg, questionSet) => {
-        setHostMsg(msg)
+    socket.on("server-question", (questionSet) => {
         console.log("Joining Game: Host")
         state.setQuestionSet(questionSet)
         setStartGame(true)
+    })
+
+    socket.on("other-joined", (msg) => {
+        setHostMsg(msg)
+        console.log("Joining Game: Host")
     })
 
     return (
