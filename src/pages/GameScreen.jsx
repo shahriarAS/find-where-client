@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { countries, usState } from "../assets/data/data";
-import gameScreenBG from "../assets/images/gameScreenBG.png";
+import gameScreenBG from "../assets/images/gameScreenBG.jpeg";
 import GameMap from "../components/game/GameMap";
 import GameOverModal from "../components/game/GameOverModal";
 import GameQuestionPanel from "../components/game/GameQuestionPanel";
