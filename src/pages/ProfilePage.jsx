@@ -2,7 +2,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import globeImg from "../assets/images/Page/Common/globe.png";
-import registerImg from "../assets/images/Page/Common/sideImage.png";
+import registerImg from "../assets/images/Page/Common/sideImage.jpeg";
 import greyMap from "../assets/images/Page/Leaderboard/grey-map.png";
 import MatchHistory from "../components/page/MatchHistory";
 import ProfileChart from "../components/page/ProfileChart";

@@ -18,7 +18,7 @@ function GameScreen() {
     const [loading, setLoading] = useState(true)
     const API_KEY = import.meta.env.VITE_MAPQUEST_API_KEY
     let questionSet = Array()
-    const nameKey = state.playBy.toLowerCase() == "country" ? "ADMIN" : "name"
+    const nameKey = "name"
     const locationData = state.playBy.toLowerCase() == "country" ? countries : state.playBy.toLowerCase() == "state" ? usState : countries
 
     const generateQuestion = async () => {

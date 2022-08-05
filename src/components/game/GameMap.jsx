@@ -16,7 +16,7 @@ function GameMap() {
     };
 
     const onEachlocation = (location, layer) => {
-        const locationName = location?.properties?.name || location?.properties?.ADMIN;
+        const locationName = location?.properties?.name;
         // // console.log(locationName)
         // // console.log(targetCity)
         if (locationName == targetCity.name) {

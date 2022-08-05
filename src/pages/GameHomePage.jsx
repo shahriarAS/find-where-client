@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import bannerBG from "../assets/images/Page/Homepage/17.png";
+import bannerBG from "../assets/images/Page/Homepage/17.jpeg";
 import multiplayerImg from "../assets/images/Page/Homepage/24.png";
 import singleplayerImg from "../assets/images/Page/Homepage/27.png";
-import cardBG from "../assets/images/Page/Homepage/69.png";
+import cardBG from "../assets/images/Page/Homepage/69.jpeg";
 import useStore from '../store';
 
 function GameHomePage({ gameType }) {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import globeImg from "../assets/images/Page/Common/globe.png";
-import registerImg from "../assets/images/Page/Common/sideImage.png";
+import registerImg from "../assets/images/Page/Common/sideImage.jpeg";
 import RegForm from "../components/page/RegForm";
 import Loading from "../components/root/Loading";
 

@@ -1,7 +1,7 @@
 import { doc, updateDoc } from "firebase/firestore";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import globeImg from "../assets/images/Page/Common/globe.png";
-import settingsImg from "../assets/images/Page/Common/sideImage.png";
+import settingsImg from "../assets/images/Page/Common/sideImage.jpeg";
 import switchOff from "../assets/images/Page/Settings/switch-off.png";
 import switchOn from "../assets/images/Page/Settings/switch-on.png";
 import { auth, db } from '../config/firebaseConfig';

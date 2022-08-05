@@ -27,7 +27,7 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
 
     const generateQuestion = async () => {
         // console.log("Generating Questions.... ")
-        const nameKey = state.playBy.toLowerCase() == "country" ? "ADMIN" : "name"
+        const nameKey = "name"
         const locationData = state.playBy.toLowerCase() == "country" ? countries : state.playBy.toLowerCase() == "state" ? usState : countries
         // console.log("NameKey: ", nameKey, state.playBy)
 

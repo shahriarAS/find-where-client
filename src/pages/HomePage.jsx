@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import bannerBG from "../assets/images/Page/Homepage/17.png";
-import cardBG from "../assets/images/Page/Homepage/69.png";
-import countryCardImg from "../assets/images/Page/Homepage/country-card.png";
-import settingImg from "../assets/images/Page/Homepage/setting-card.png";
-import stateCardImg from "../assets/images/Page/Homepage/state-card.png";
+import bannerBG from "../assets/images/Page/Homepage/17.jpeg";
+import cardBG from "../assets/images/Page/Homepage/69.jpeg";
+import countryCardImg from "../assets/images/Page/Homepage/country-card.jpeg";
+import settingImg from "../assets/images/Page/Homepage/setting-card.jpeg";
+import stateCardImg from "../assets/images/Page/Homepage/state-card.jpeg";
 import useStore from '../store';
 
 function HomePage() {
