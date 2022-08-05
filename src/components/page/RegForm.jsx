@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, deleteUser, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useId, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -20,63 +20,72 @@ function RegForm({ loading, setLoading }) {
         }
     );
 
-    const onSubmit = data => {
+    const onSubmit = async data => {
         setLoading(true)
-        createUserWithEmailAndPassword(auth, data.email, data.password)
-            .then((userCredential) => {
-                updateProfile(auth.currentUser, {
-                    displayName: data.username, photoURL: `https://avatars.dicebear.com/api/jdenticon/${data.username}.svg?mood[]=happy`
-                }).then(async () => {
-                    // Profile updated!
-                    // ...
-                    const user = userCredential.user;
-                    // console.log(user)
-                    await setDoc(doc(db, "users", user.uid), {
-                        username: data.username,
-                        email: data.email,
-                        totalScore: 0,
-                        totalTime: 0,
-                        winCount: 0,
-                        highScore: 0,
-                        totalMatch: 0,
-                        settings: {
-                            isSound: true,
-                            isMusic: true
-                        },
-                        gamePlayed: {},
-                    });
-                    setLoading(false)
-                    toast.success("Successfully Registered and Signed In.")
-                    resetState()
-                }).catch((error) => {
-                    // An error occurred
-                    // ...
-                    // console.log(error)
-                    deleteUser(auth.currentUser).then(() => {
-                        // console.log("Deleted Errored User")
+        const docRef = doc(db, "users", data.username);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            setLoading(false)
+            toast.error("This username is already used. Please use unqiue username.")
+        } else {
+            createUserWithEmailAndPassword(auth, data.email, data.password)
+                .then((userCredential) => {
+                    updateProfile(auth.currentUser, {
+                        displayName: data.username, photoURL: `https://avatars.dicebear.com/api/jdenticon/${data.username}.svg?mood[]=happy`
+                    }).then(async () => {
+                        // Profile updated!
+                        // ...
+                        const user = userCredential.user;
+                        // console.log(user)
+                        await setDoc(doc(db, "users", user.displayName), {
+                            username: data.username,
+                            email: data.email,
+                            totalScore: 0,
+                            totalTime: 0,
+                            winCount: 0,
+                            highScore: 0,
+                            totalMatch: 0,
+                            settings: {
+                                isSound: true,
+                                isMusic: true
+                            },
+                            gamePlayed: {},
+                        });
                         setLoading(false)
+                        toast.success("Successfully Registered and Signed In.")
+                        resetState()
                     }).catch((error) => {
-                        // An error ocurred
+                        // An error occurred
                         // ...
                         // console.log(error)
-                        setLoading(false)
+                        deleteUser(auth.currentUser).then(() => {
+                            // console.log("Deleted Errored User")
+                            setLoading(false)
+                        }).catch((error) => {
+                            // An error ocurred
+                            // ...
+                            // console.log(error)
+                            setLoading(false)
+                        });
                     });
+                })
+                .catch((error) => {
+                    setLoading(false)
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // console.log(error)
+                    switch (error.code) {
+                        case "auth/email-already-in-use":
+                            toast.error("User with email is already exists. Try to login.")
+                            break;
+                        default:
+                            toast.error("Something happende. Please try again.")
+                            break;
+                    }
                 });
-            })
-            .catch((error) => {
-                setLoading(false)
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // console.log(error)
-                switch (error.code) {
-                    case "auth/email-already-in-use":
-                        toast.error("User with email is already exists. Try to login.")
-                        break;
-                    default:
-                        toast.error("Something happende. Please try again.")
-                        break;
-                }
-            });
+        }
+
     }
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="register-form flex flex-col gap-4 mt-8 text-[#A900FD]">

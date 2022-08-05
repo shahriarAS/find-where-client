@@ -3,7 +3,6 @@ import globalVariable from "../../utils/globalVariable";
 function MatchHistory({ userData }) {
     return (
         <>
-            <h1 className="history-title text-5xl self-center">Match History</h1>
             <div className="profile-history w-full grid grid-cols-2 gap-4 mt-8 text-[#A900FD]">
                 <div className="history-item">
                     <div className="mb-1 text-lg font-medium text-[#A900FD]">Total Score: </div>

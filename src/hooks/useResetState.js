@@ -9,7 +9,7 @@ function useResetState() {
 
 
     const getDataOnce = async () => {
-        const docRef = doc(db, "users", user.uid);
+        const docRef = doc(db, "users", user.displayName);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {

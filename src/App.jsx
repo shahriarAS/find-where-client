@@ -17,6 +17,7 @@ import Multiplayer from "./pages/Multiplayer";
 import PageNotFound from "./pages/PageNotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ProfilePage from "./pages/ProfilePage";
+import PublicProfile from "./pages/PublicProfile";
 import Register from './pages/Register';
 import Settings from './pages/Settings';
 import TermsCondition from "./pages/TermsCondition";
@@ -29,7 +30,7 @@ function App() {
 
 
   const getDataOnce = async () => {
-    const docRef = doc(db, "users", user.uid);
+    const docRef = doc(db, "users", user.displayName);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -108,6 +109,9 @@ function App() {
           } />
           <Route path="/page/privacy-policy" element={
             <Layout childComp={<PrivacyPolicy />} />
+          } />
+          <Route exact path="/user/:username" element={
+            <Layout childComp={<PublicProfile />} />
           } />
           <Route path="*" element={
             <Layout childComp={<PageNotFound />} />

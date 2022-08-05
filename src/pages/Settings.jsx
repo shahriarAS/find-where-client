@@ -13,7 +13,7 @@ function Settings() {
 
     const toggleSoundSetting = () => {
         if (user) {
-            const gamePlayedRef = doc(db, "users", auth.currentUser.uid);
+            const gamePlayedRef = doc(db, "users", user.displayName);
             const updateSoundDoc = async () => {
                 await updateDoc(gamePlayedRef, {
                     "settings.isSound": !state.isSound
@@ -26,7 +26,7 @@ function Settings() {
 
     const toggleMusicSetting = () => {
         if (user) {
-            const gamePlayedRef = doc(db, "users", auth.currentUser.uid);
+            const gamePlayedRef = doc(db, "users", user.displayName);
             const updateMusicDoc = async () => {
                 await updateDoc(gamePlayedRef, {
                     "settings.isMusic": !state.isMusic

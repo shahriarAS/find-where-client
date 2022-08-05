@@ -15,7 +15,7 @@ function GameOverModal() {
         // console.log("In Update DB")
 
         if (user) {
-            const gamePlayedRef = doc(db, "users", auth.currentUser.uid);
+            const gamePlayedRef = doc(db, "users", user.displayName);
             const gameID = generateRandom()
 
             const addResulToDB = async () => {

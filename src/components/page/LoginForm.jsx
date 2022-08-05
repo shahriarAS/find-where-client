@@ -25,7 +25,7 @@ function LoginForm({ loading, setLoading }) {
             .then(async (userCredential) => {
                 const user = userCredential.user;
                 // console.log(userCredential)
-                const docRef = doc(db, "users", user.uid);
+                const docRef = doc(db, "users", user.displayName);
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
@@ -52,6 +52,7 @@ function LoginForm({ loading, setLoading }) {
                         break;
                 }
                 resetState()
+                setLoading(false)
             });
     }
 
