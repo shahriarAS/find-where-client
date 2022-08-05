@@ -58,7 +58,7 @@ function GameTimer() {
             // console.log("Now Resume")
         }
 
-    }, [state.updateQ, state.gamePause, state.gameOver, state.gameBonus, state.gameStart, state.choiceModal]);
+    }, [state.updateQ, state.gamePause, state.gameOver, state.gameStart, state.choiceModal]);
 
     return (
         <div onClick={isRunning ? pause : resume} className="kahoot-timer absolute left-4 top-[50%] w-20 h-20 flex items-center justify-center bg-violet-600 rounded-full text-5xl text-white font-bold z-10">{seconds}</div>

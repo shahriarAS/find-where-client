@@ -8,8 +8,6 @@ import greyMap from "../assets/images/Page/Leaderboard/grey-map.png";
 import Loading from "../components/root/Loading";
 import { auth, db } from '../config/firebaseConfig';
 import useStore from "../store/index";
-import globalVariable from "../utils/globalVariable";
-import secondsToMinute from "../utils/secondsToMinute";
 
 function Leaderboard() {
     const [loadingData, setLoadingData] = useState(true);
@@ -30,7 +28,7 @@ function Leaderboard() {
 
         function rankingFunction(userDataOne, userDataTwo) {
             // Ranking Algorithm
-            return (globalVariable.maxTime - userDataTwo.bestTime + userDataTwo.totalScore + userDataTwo.winCount) - (globalVariable.maxTime - userDataOne.bestTime + userDataOne.totalScore + userDataOne.winCount);
+            return userDataTwo.totalScore - userDataOne.totalScore;
         }
 
         toAddAllData.sort(rankingFunction);
@@ -76,9 +74,6 @@ function Leaderboard() {
                                                 <th scope="col" className="px-6 py-3 tracking-wider">
                                                     Total Score
                                                 </th>
-                                                <th scope="col" className="px-6 py-3 tracking-wider">
-                                                    Best Time
-                                                </th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -101,9 +96,6 @@ function Leaderboard() {
                                                         </td>
                                                         <td className="px-6 py-4 whitespace-nowrap">
                                                             {userData.totalScore}
-                                                        </td>
-                                                        <td className="px-6 py-4 whitespace-nowrap">
-                                                            {secondsToMinute(userData.bestTime).minutes} : {secondsToMinute(userData.bestTime).seconds}
                                                         </td>
                                                         {
                                                             index == 0 ? (

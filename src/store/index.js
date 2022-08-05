@@ -15,21 +15,15 @@ const initialState = {
     opponentCorrect: 0,
     opponentIncorrect: 0,
     opponentHighScore: 0,
-    hintTook: 0,
     time: "init",
     highScore: 0,
-    bestTime: 0,
     isSound: localStorage.getItem('isSound') || true,
     isMusic: localStorage.getItem('isMusic') || true,
-    difficulty: localStorage.getItem('difficulty') || "normal",
     isFullScreen: false,
     gameOver: "init",
     gamePause: "init",
-    gameBonus: "init",
     gameStart: "init",
     gameWon: false,
-    showHint: false,
-    isLoading: false,
     answer: "",
     lastAnswer: "",
     selectedChoice: null,
@@ -43,7 +37,6 @@ const initialState = {
     updateQ: "init",
     choiceModal: false,
     isQuesCorr: "init",
-    zoom: 6,
 }
 
 const useStore = create(set => ({
@@ -75,9 +68,6 @@ const useStore = create(set => ({
     addOpponentHighScore: (val) => set(state => ({
         opponentHighScore: state.opponentHighScore + val
     })),
-    addHintTook: () => set(state => ({
-        hintTook: state.hintTook + 1
-    })),
     setTime: (time) => set(state => ({
         time: time
     })),
@@ -86,9 +76,6 @@ const useStore = create(set => ({
     })),
     toggleMusic: () => set(state => ({
         isMusic: !state.isMusic
-    })),
-    updateDifficulty: (val) => set(state => ({
-        difficulty: val
     })),
     toggleFullScreen: () => set(state => ({
         isFullScreen: !state.isFullScreen
@@ -99,29 +86,11 @@ const useStore = create(set => ({
     setGamePause: (val) => set(state => ({
         gamePause: val
     })),
-    setGameBonus: (val) => set(state => ({
-        gameBonus: val
-    })),
     setGameStart: (val) => set(state => ({
         gameStart: val
     })),
     setGameWon: (val) => set(state => ({
         gameWon: val
-    })),
-    setReduceTime: (val) => set(state => ({
-        reduceTime: val
-    })),
-    setShowHint: (val) => set(state => ({
-        showHint: val
-    })),
-    setIsLoading: (val) => set(state => ({
-        isLoading: val
-    })),
-    addGamePlayed: (val) => set(state => ({
-        gamePlayed: [
-            ...state.gamePlayed,
-            val
-        ],
     })),
     setQuestionSet: (questionSet) => set((state) => (
         {
@@ -197,17 +166,11 @@ const useStore = create(set => ({
             isQuesCorr: val
         }
     )),
-    setZoom: (val) => set((state) => (
-        {
-            zoom: state.zoom + val
-        }
-    )),
     resetState: (val = null) => set(state => (
         val ? {
             ...state,
             isSound: val.isSound,
             isMusic: val.isMusic,
-            difficulty: val.difficulty
         } : initialState
     )
     )

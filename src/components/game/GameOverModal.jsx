@@ -29,7 +29,6 @@ function GameOverModal() {
                         opponentScore: state.opponentScore,
                         correct: state.correctCount,
                         incorrect: state.incorrectCount,
-                        hintTook: state.hintTook,
                         gameMode: state.gameMode,
                         gameName: state.playBy,
                         createdAt: Date.now()

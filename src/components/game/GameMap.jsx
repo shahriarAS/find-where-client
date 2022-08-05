@@ -40,7 +40,7 @@ function GameMap() {
         <div className="w-full h-full bg-white overflow-hidden relative -z-20">
             {
                 loading ? (<Loading />) :
-                    <MapContainer key={targetCity.latLang} style={{ height: "100%", width: "100%" }} zoom={state.zoom} maxZoom={12} center={targetCity.latLang} zoomControl={false}>
+                    <MapContainer key={targetCity.latLang} style={{ height: "100%", width: "100%" }} zoom={6} maxZoom={12} center={targetCity.latLang} zoomControl={false}>
                         <GeoJSON
                             key={targetCity.latLang}
                             style={locationStyle}

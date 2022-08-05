@@ -37,19 +37,6 @@ function Settings() {
         state.toggleMusic()
     }
 
-    const changeDifficultySetting = (e) => {
-        if (user) {
-            const gamePlayedRef = doc(db, "users", auth.currentUser.uid);
-            const updateDifficultyDoc = async () => {
-                await updateDoc(gamePlayedRef, {
-                    "settings.difficulty": e.target.value
-                });
-            }
-            updateDifficultyDoc()
-        }
-        state.updateDifficulty(e.target.value)
-    }
-
     return (
         <div className="settings-page h-[90vh] max-h-[800px] flex font-Saira text-[#424242] uppercase">
             <div className="settings-form relative flex-1 bg-cover bg-center bg-no-repeat bg-blend-multiply bg-gray-200">
@@ -81,7 +68,7 @@ function Settings() {
                                 }
                             </div>
                         </div>
-                        <div className="settings-div flex items-center justify-between">
+                        {/* <div className="settings-div flex items-center justify-between">
                             <div className="setting-label text-2xl">
                                 Difficulty:
                             </div>
@@ -92,7 +79,7 @@ function Settings() {
                                     <option value="hard">Hard</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

@@ -17,10 +17,8 @@ function useResetState() {
             // console.log("Reset Data")
             state.resetState({
                 highScore: data.highScore,
-                bestTime: data.bestTime,
                 isSound: data.settings.isSound,
                 isMusic: data.settings.isMusic,
-                difficulty: data.settings.difficulty
             })
         } else {
             // console.log("No such document!");

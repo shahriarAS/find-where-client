@@ -39,14 +39,12 @@ function App() {
         highScore: data.highScore,
         isSound: data.settings.isSound,
         isMusic: data.settings.isMusic,
-        difficulty: data.settings.difficulty
       })
       // console.log({
       //   username: data.username,
       //   highScore: data.highScore,
       //   isSound: data.settings.isSound,
       //   isMusic: data.settings.isMusic,
-      //   difficulty: data.settings.difficulty
       // })
     } else {
       // console.log("No such document!");

@@ -61,17 +61,6 @@ function MatchHistory({ userData }) {
                         </div>
                     </div>
                 </div>
-                <div className="history-item">
-                    <div className="mb-1 text-lg font-medium text-[#A900FD]">Best Time: </div>
-                    <div className="w-full bg-gray-200 rounded-full h-4.5 mb-4">
-                        <div className="bg-[#A900FD] text-sm font-medium text-white text-center p-1 leading-none rounded-full" style={{
-                            width: `${userData?.bestTime ? (userData?.bestTime / globalVariable?.maxTime) * 100 : 100
-                                }%`
-                        }}>
-                            {userData?.bestTime} / {globalVariable?.maxTime}
-                        </div>
-                    </div>
-                </div>
             </div>
         </>
     );

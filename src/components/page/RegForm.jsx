@@ -38,7 +38,6 @@ function RegForm({ loading, setLoading }) {
                         totalTime: 0,
                         winCount: 0,
                         highScore: 0,
-                        bestTime: 0,
                         totalMatch: 0,
                         settings: {
                             isSound: true,
