@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useTimer } from 'react-timer-hook';
+import useSound from 'use-sound';
+import wrongSound from "../../assets/audio/wrong.mp3";
 import useStore from "../../store";
 import globalVariable from "../../utils/globalVariable";
 
@@ -7,6 +9,7 @@ function GameTimer() {
     var time = new Date();
     const state = useStore((state) => state)
     const socket = useStore((state) => state.socket)
+    const [playWrongSound] = useSound(wrongSound);
 
     const {
         seconds,
@@ -17,11 +20,14 @@ function GameTimer() {
         restart,
     } = useTimer({
         expiryTimestamp: time.setSeconds(time.getSeconds() + (globalVariable?.maxTime)), autoStart: true, onExpire: () => {
+            state.isSound ? playWrongSound() : null
             state.incrementIncorrectCount()
             state.resetAnswerStreak()
             state.setIsQuesCorr(false)
             state.setChoiceModal(true)
-            state.setUpdateQ(true)
+            setTimeout(function () {
+                state.setUpdateQ(true)
+            }, 500)
             // setTimeout(function () {
             //     state.incrementIncorrectCount()
             //     state.resetAnswerStreak()

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useStore from "../../store";
 import globalVariable from "../../utils/globalVariable";
 
+
 function ChoiceModal() {
     const state = useStore((state) => state);
     const socket = useStore((state) => state.socket)
@@ -14,6 +15,7 @@ function ChoiceModal() {
                 const score = parseInt((1 - ((state.time / globalVariable.maxTime) / 2)) * (1000 + (state.answerStreak * 100)))
                 state.addScore(score)
                 setToAddScore(score)
+
 
                 if (state.gameMode == "multiplayer") {
                     console.log("Socket Emit Add: ")

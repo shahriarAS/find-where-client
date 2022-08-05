@@ -32,7 +32,6 @@ function GameMap() {
         state.setChoices()
         state.setTargetCity()
         setLoading(false)
-        console.log(state.questionSet)
     }, [state.answer]);
 
 

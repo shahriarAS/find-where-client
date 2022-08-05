@@ -1,15 +1,21 @@
 import { useRef, useState } from "react";
 import { BsCheckLg } from "react-icons/bs";
 import { FaTimes } from "react-icons/fa";
+import useSound from 'use-sound';
+import rightSound from "../../assets/audio/right.mp3";
+import wrongSound from "../../assets/audio/wrong.mp3";
 import useStore from "../../store";
 
 function GameChoices({ choices, checkAnswer }) {
+    const [playRightSound] = useSound(rightSound);
+    const [playWrongSound] = useSound(wrongSound);
     const choiceRef = useRef("")
     const state = useStore((state) => state);
     const socket = useStore((state) => state.socket)
     const [checkClass, setCheckClass] = useState("")
 
     const submitAnswer = (e, ans) => {
+
         state.setLastAnswer(state.answer)
         state.setSelectedChoice(ans)
         // e.target.classList.add("blink-1")
@@ -20,11 +26,13 @@ function GameChoices({ choices, checkAnswer }) {
 
         const addSign = () => {
             if (state.answer == ans) {
+                state.isSound ? playRightSound() : null
                 e.target.classList.remove("bg-gradient-to-r")
                 e.target.classList.add("bg-green-600")
                 e.target.childNodes[2].classList.add("hidden")
                 e.target.childNodes[1].classList.remove("opacity-0")
             } else {
+                state.isSound ? playWrongSound() : null
                 e.target.classList.remove("bg-gradient-to-r")
                 e.target.classList.add("bg-red-700")
                 e.target.childNodes[2].classList.remove("opacity-0")
@@ -47,6 +55,7 @@ function GameChoices({ choices, checkAnswer }) {
         }
 
         setTimeout(function () {
+            
             addSign()
             scoring()
         }, 500);
