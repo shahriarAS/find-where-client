@@ -17,8 +17,8 @@ function GameMap() {
 
     const onEachlocation = (location, layer) => {
         const locationName = location?.properties?.name || location?.properties?.ADMIN;
-        // console.log(locationName)
-        // console.log(targetCity)
+        // // console.log(locationName)
+        // // console.log(targetCity)
         if (locationName == targetCity.name) {
             layer.options.fillColor = "#603FC6";
             layer.options.fillOpacity = 1;

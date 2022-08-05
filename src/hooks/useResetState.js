@@ -14,7 +14,7 @@ function useResetState() {
 
         if (docSnap.exists()) {
             const data = docSnap.data()
-            console.log("Reset Data")
+            // console.log("Reset Data")
             state.resetState({
                 highScore: data.highScore,
                 bestTime: data.bestTime,
@@ -23,17 +23,17 @@ function useResetState() {
                 difficulty: data.settings.difficulty
             })
         } else {
-            console.log("No such document!");
+            // console.log("No such document!");
         }
     }
 
     return () => {
         if (user) {
             getDataOnce()
-            console.log("getDataOnce()")
+            // console.log("getDataOnce()")
         } else {
             state.resetState()
-            console.log("state.resetState()")
+            // console.log("state.resetState()")
         }
     }
 }

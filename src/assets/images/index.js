@@ -119,7 +119,7 @@ async function downloadImage(url, filepath) {
 
 getAllLink()
 allLink.forEach(link => {
-    console.log("Downloading: ", link.split('/').pop())
+    // console.log("Downloading: ", link.split('/').pop())
 
     downloadImage(link, `${link.split('/').pop()}`)
 })

@@ -24,15 +24,15 @@ function LoginForm({ loading, setLoading }) {
         signInWithEmailAndPassword(auth, data.email, data.password)
             .then(async (userCredential) => {
                 const user = userCredential.user;
-                console.log(userCredential)
+                // console.log(userCredential)
                 const docRef = doc(db, "users", user.uid);
                 const docSnap = await getDoc(docRef);
 
                 if (docSnap.exists()) {
-                    console.log("Document data:", docSnap.data());
+                    // console.log("Document data:", docSnap.data());
                 } else {
                     // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    // console.log("No such document!");
                 }
                 toast.success("Successfully Logged In.")
                 resetState()
@@ -42,7 +42,7 @@ function LoginForm({ loading, setLoading }) {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(error)
+                // console.log(error)
                 switch (error.code) {
                     case "auth/wrong-password":
                         toast.error("Email or Password Wrong. Try agian.")

@@ -38,7 +38,7 @@ function GameTimer() {
 
     useEffect(() => {
         if (state.updateQ == true) {
-            console.log("Should Restart Time")
+            // console.log("Should Restart Time")
             var time = new Date();
             restart(time.setSeconds(time.getSeconds() + (globalVariable?.maxTime)), true)
         }
@@ -49,13 +49,13 @@ function GameTimer() {
             pause()
 
             if (state.gameOver == true && state.gameMode == "multiplayer") {
-                console.log("Emit Game Over")
+                // console.log("Emit Game Over")
                 socket.emit("game-over", state.gameCode)
             }
 
         } else if (state.gamePause != true && state.gameOver != true && state.gameStart != true && state.choiceModal != true) {
             resume()
-            console.log("Now Resume")
+            // console.log("Now Resume")
         }
 
     }, [state.updateQ, state.gamePause, state.gameOver, state.gameBonus, state.gameStart, state.choiceModal]);

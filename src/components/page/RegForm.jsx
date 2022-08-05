@@ -30,7 +30,7 @@ function RegForm({ loading, setLoading }) {
                     // Profile updated!
                     // ...
                     const user = userCredential.user;
-                    console.log(user)
+                    // console.log(user)
                     await setDoc(doc(db, "users", user.uid), {
                         username: data.username,
                         email: data.email,
@@ -52,14 +52,14 @@ function RegForm({ loading, setLoading }) {
                 }).catch((error) => {
                     // An error occurred
                     // ...
-                    console.log(error)
+                    // console.log(error)
                     deleteUser(auth.currentUser).then(() => {
-                        console.log("Deleted Errored User")
+                        // console.log("Deleted Errored User")
                         setLoading(false)
                     }).catch((error) => {
                         // An error ocurred
                         // ...
-                        console.log(error)
+                        // console.log(error)
                         setLoading(false)
                     });
                 });
@@ -68,7 +68,7 @@ function RegForm({ loading, setLoading }) {
                 setLoading(false)
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(error)
+                // console.log(error)
                 switch (error.code) {
                     case "auth/email-already-in-use":
                         toast.error("User with email is already exists. Try to login.")

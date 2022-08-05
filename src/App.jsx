@@ -41,29 +41,29 @@ function App() {
         isMusic: data.settings.isMusic,
         difficulty: data.settings.difficulty
       })
-      console.log({
-        username: data.username,
-        highScore: data.highScore,
-        isSound: data.settings.isSound,
-        isMusic: data.settings.isMusic,
-        difficulty: data.settings.difficulty
-      })
+      // console.log({
+      //   username: data.username,
+      //   highScore: data.highScore,
+      //   isSound: data.settings.isSound,
+      //   isMusic: data.settings.isMusic,
+      //   difficulty: data.settings.difficulty
+      // })
     } else {
-      console.log("No such document!");
+      // console.log("No such document!");
     }
   }
 
   socket.on('connect', () => {
-    console.log("Connected: ", socket.id)
+    // console.log("Connected: ", socket.id)
   });
 
   useEffect(() => {
     if (user) {
       getDataOnce()
-      console.log("getDataOnce()")
+      // console.log("getDataOnce()")
     } else {
       state.resetState()
-      console.log("state.resetState()")
+      // console.log("state.resetState()")
     }
   }, [user]);
 

@@ -11,7 +11,7 @@ function ProfileChart({ userData, graphType }) {
     i["name"] = `Match ${index + 1}`
     return i
   });
-  console.log(matchData)
+  // console.log(matchData)
 
   return (
     <ResponsiveContainer width="100%" height="100%">

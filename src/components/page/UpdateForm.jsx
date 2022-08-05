@@ -31,7 +31,7 @@ function UpdateForm() {
         }).catch((error) => {
             // An error occurred
             // ...
-            console.log(error)
+            // console.log(error)
         });
     }
     return (

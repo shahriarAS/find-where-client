@@ -1,6 +1,5 @@
 import { doc, increment, updateDoc } from "firebase/firestore";
 import { useEffect } from "react";
-import Confetti from "react-confetti";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from "../../config/firebaseConfig";
 import useStore from "../../store";
@@ -13,7 +12,7 @@ function GameOverModal() {
     const state = useStore((state) => state)
 
     const updateDB = () => {
-        console.log("In Update DB")
+        // console.log("In Update DB")
 
         if (user) {
             const gamePlayedRef = doc(db, "users", auth.currentUser.uid);

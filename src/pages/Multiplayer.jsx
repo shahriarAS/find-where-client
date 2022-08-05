@@ -17,7 +17,7 @@ function Multiplayer() {
     const [openJoinModal, setOpenJoinModal] = useState(gameCodeQuery ? true : false);
 
     useEffect(() => {
-        console.log(state.playBy, " - ", gameName, " - ")
+        // console.log(state.playBy, " - ", gameName, " - ")
         if (state.playBy == "" && !gameName) {
             navigate("/", { replace: false })
         } else if (gameName) {

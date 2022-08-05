@@ -26,10 +26,10 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
     }
 
     const generateQuestion = async () => {
-        console.log("Generating Questions.... ")
+        // console.log("Generating Questions.... ")
         const nameKey = state.playBy.toLowerCase() == "country" ? "ADMIN" : "name"
         const locationData = state.playBy.toLowerCase() == "country" ? countries : state.playBy.toLowerCase() == "state" ? usState : countries
-        console.log("NameKey: ", nameKey, state.playBy)
+        // console.log("NameKey: ", nameKey, state.playBy)
 
         let randomNumList = uniqueRandomNumList(locationData.features.length - 4, (locationData.features.length > 40 ? 40 : locationData.features.length > 20 ? 20 : 8))
 
@@ -65,12 +65,12 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
             })
 
         } else if (user && openJoinModal && state.playBy && state.gameMode == "multiplayer") {
-            console.log()
+            // console.log()
             state.setGameCode(gameCode)
             // state.playBy == "" && state.setPlayBy(gameName)
             setLoading(true)
             await generateQuestion()
-            console.log("Joining Game: Join")
+            // console.log("Joining Game: Join")
             socket.emit("join-game", gameCode, state.username, questionSet, joinResponse => {
                 joinResponse && toast.error(joinResponse)
             })
@@ -89,7 +89,7 @@ function JoinModal({ openJoinModal, setOpenJoinModal, setStartGame, gameCodeQuer
 
 
     // const submitGameSetting = () => {
-    //     console.log("In SUbmit")
+    //     // console.log("In SUbmit")
     //     setLoading(true)
     //     generateQuestion()
     // }

@@ -8,7 +8,7 @@ import useStore from '../store';
 
 function GameHomePage({ gameType }) {
     const state = useStore((state) => state)
-    console.log(gameType)
+    // console.log(gameType)
 
     useEffect(() => {
         state.resetState({

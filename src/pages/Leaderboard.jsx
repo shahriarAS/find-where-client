@@ -38,7 +38,7 @@ function Leaderboard() {
         setAllUserData(toAddAllData)
         setLoadingData(false)
 
-        console.log(toAddAllData)
+        // console.log(toAddAllData)
     }
 
     useEffect(() => {

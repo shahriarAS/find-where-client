@@ -25,11 +25,11 @@ function ProfilePage() {
 
         if (docSnap.exists()) {
             const data = docSnap.data()
-            console.log(data)
+            // console.log(data)
             setUserData(data)
             setLoadingData(false)
         } else {
-            console.log("No such document!");
+            // console.log("No such document!");
             setLoadingData(false)
         }
     }
