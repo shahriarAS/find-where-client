@@ -14,6 +14,7 @@ import uniqueRandomNumList from "../utils/uniqueRandomNumList";
 
 function GameScreen() {
     const state = useStore((state) => state);
+    const socket = useStore((state) => state.socket)
     const [loading, setLoading] = useState(true)
     const API_KEY = import.meta.env.VITE_MAPQUEST_API_KEY
     let questionSet = Array()
@@ -57,7 +58,10 @@ function GameScreen() {
 
     useEffect(() => {
         state.gameMode == "singleplayer" ? submitGameSetting() : setLoading(false)
-    }, [state.gameMode]);
+        socket.on("over-show", () => {
+            state.setGameOver(true)
+        })
+    }, [state.gameMode, socket]);
 
 
 

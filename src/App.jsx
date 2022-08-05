@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import SinglePlayerGameOver from "./components/game/SinglePlayerGameOver";
+import MultiPlayerGameOver from "./components/game/MultiPlayerGameOver";
 import Layout from './components/root/Layout';
 import Loading from "./components/root/Loading";
 import { auth, db } from './config/firebaseConfig.js';
@@ -116,7 +116,7 @@ function App() {
             <Layout childComp={<PrivacyPolicy />} />
           } />
           <Route path="/over" element={
-            <SinglePlayerGameOver />
+            <MultiPlayerGameOver />
           } />
           <Route path="*" element={
             <Layout childComp={<h1>404 Not Found</h1>} />
