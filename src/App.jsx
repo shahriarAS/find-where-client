@@ -4,7 +4,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import MultiPlayerGameOver from "./components/game/MultiPlayerGameOver";
 import Layout from './components/root/Layout';
 import Loading from "./components/root/Loading";
 import { auth, db } from './config/firebaseConfig.js';
@@ -15,8 +14,8 @@ import HomePage from './pages/HomePage';
 import Leaderboard from "./pages/Leaderboard";
 import Login from './pages/Login';
 import Multiplayer from "./pages/Multiplayer";
+import PageNotFound from "./pages/PageNotFound";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-// import NewGameScreen from './pages/NewGameScreen';
 import ProfilePage from "./pages/ProfilePage";
 import Register from './pages/Register';
 import Settings from './pages/Settings';
@@ -88,9 +87,6 @@ function App() {
           <Route path="/multiplayer/" element={
             user ? <Multiplayer /> : <Layout childComp={<Login />} />
           } />
-          {/* <Route path="/new" element={
-            <Layout childComp={<NewGameScreen />} />
-          } /> */}
           <Route path="/register" element={
             <Layout childComp={user ? <HomePage /> : <Register />} />
           } />
@@ -115,11 +111,8 @@ function App() {
           <Route path="/page/privacy-policy" element={
             <Layout childComp={<PrivacyPolicy />} />
           } />
-          <Route path="/over" element={
-            <MultiPlayerGameOver />
-          } />
           <Route path="*" element={
-            <Layout childComp={<h1>404 Not Found</h1>} />
+            <Layout childComp={<PageNotFound />} />
           } />
         </Routes>
       </div>
