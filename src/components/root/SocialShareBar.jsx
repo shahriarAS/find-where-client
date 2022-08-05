@@ -7,10 +7,10 @@ function SocialShareBar() {
     const subject = "Find Where I Am | Online Solo-Multiplayer Game"
     const body = `I am playing "Find Where I Am". This game is amazing. You can also play it for free. Let's play together. Link:`
     const hashtag = "#findWhereIam #playFindWhereIam"
-    const media = ""
+    const media = "https://i.postimg.cc/3JrjJq8V/Screenshot-2022-08-05-Find-The-Object-Online-Solo-Multiplayer-Game.png"
 
     return (
-        <div className="fixed right-0 m-auto w-10 bg-white/70 py-2 pb-8 flex flex-col items-center justify-between gap-2 rounded-tl rounded-bl z-10">
+        <div className="fixed right-0 m-auto w-10 bg-white/70 py-2 pb-8 flex flex-col items-center justify-between gap-2 rounded-tl rounded-bl z-10 font-Saira">
             <EmailShareButton
                 url={url}
                 subject={subject}
