@@ -45,7 +45,7 @@ function MultiPlayerGameOver() {
                 ) : null
             }
             <div className="relative w-96 h-5/6 bg-gradient-to-r from-[#667db6] to-[#C06C84] rounded-lg shadow-2xl text-white p-4 py-4 flex flex-col items-center justify-center">
-                <div class="ribbon ribbon-top-left"><span>You</span></div>
+                <div className="ribbon ribbon-top-left"><span>You</span></div>
                 {
                     matchWon ? (
                         <img src={trophyGoldImg} alt="Victory Trophy" className='w-40 puff-in-center' />) : (
@@ -90,7 +90,7 @@ function MultiPlayerGameOver() {
                 </div>
             </div>
             <div className="relative w-96 h-5/6 bg-gradient-to-r from-[#667db6] to-[#C06C84] rounded-lg shadow-2xl text-white p-4 py-4 flex flex-col items-center justify-center">
-                <div class="ribbon ribbon-top-left"><span>Opponent</span></div>
+                <div className="ribbon ribbon-top-left"><span>Opponent</span></div>
                 {
                     (state.score == state.opponentScore || state.score < state.opponentScore) ? (
                         <img src={trophyGoldImg} alt="Victory Trophy" className='w-40 puff-in-center' />)
