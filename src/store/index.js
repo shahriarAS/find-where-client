@@ -13,7 +13,6 @@ const initialState = {
     answerStreak: 0,
     opponentScore: 0,
     opponentCorrect: 0,
-    opponentIncorrect: 0,
     opponentHighScore: 0,
     time: "init",
     highScore: 0,
@@ -23,7 +22,6 @@ const initialState = {
     gameOver: "init",
     gamePause: "init",
     gameStart: "init",
-    gameWon: false,
     answer: "",
     lastAnswer: "",
     selectedChoice: null,
@@ -62,9 +60,6 @@ const useStore = create(set => ({
     addOpponentCorrect: (val) => set(state => ({
         opponentCorrect: state.opponentCorrect + val
     })),
-    addOpponentIncorrect: (val) => set(state => ({
-        opponentIncorrect: state.opponentIncorrect + val
-    })),
     addOpponentHighScore: (val) => set(state => ({
         opponentHighScore: state.opponentHighScore + val
     })),
@@ -88,9 +83,6 @@ const useStore = create(set => ({
     })),
     setGameStart: (val) => set(state => ({
         gameStart: val
-    })),
-    setGameWon: (val) => set(state => ({
-        gameWon: val
     })),
     setQuestionSet: (questionSet) => set((state) => (
         {
@@ -169,6 +161,8 @@ const useStore = create(set => ({
     resetState: (val = null) => set(state => (
         val ? {
             ...state,
+            username: val.username,
+            highScore: val.highScore,
             isSound: val.isSound,
             isMusic: val.isMusic,
         } : initialState

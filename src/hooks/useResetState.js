@@ -16,6 +16,7 @@ function useResetState() {
             const data = docSnap.data()
             // console.log("Reset Data")
             state.resetState({
+                username: data.username,
                 highScore: data.highScore,
                 isSound: data.settings.isSound,
                 isMusic: data.settings.isMusic,

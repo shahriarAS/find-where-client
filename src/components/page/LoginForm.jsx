@@ -15,7 +15,7 @@ import useStore from "../../store";
 function LoginForm({ loading, setLoading }) {
     const [showPass, setShowPass] = useState(false)
     const state = useStore((state) => state)
-    const resetState = useResetState()
+    const resetStateHook = useResetState()
     let navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
 
@@ -35,7 +35,6 @@ function LoginForm({ loading, setLoading }) {
                     // console.log("No such document!");
                 }
                 toast.success("Successfully Logged In.")
-                resetState()
                 // navigate("/")
                 setLoading(false)
             })
@@ -51,9 +50,10 @@ function LoginForm({ loading, setLoading }) {
                         toast.error("Email or Password Wrong. Try agian.")
                         break;
                 }
-                resetState()
                 setLoading(false)
             });
+
+        resetStateHook()
     }
 
     return (

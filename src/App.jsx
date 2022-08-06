@@ -41,12 +41,6 @@ function App() {
         isSound: data.settings.isSound,
         isMusic: data.settings.isMusic,
       })
-      // console.log({
-      //   username: data.username,
-      //   highScore: data.highScore,
-      //   isSound: data.settings.isSound,
-      //   isMusic: data.settings.isMusic,
-      // })
     } else {
       // console.log("No such document!");
     }

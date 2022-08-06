@@ -11,7 +11,12 @@ function HomePage() {
     const state = useStore((state) => state)
 
     useEffect(() => {
-        state.resetState()
+        state.resetState({
+            username: state.username,
+            highScore: state.highScore,
+            isSound: state.isSound,
+            isMusic: state.isMusic,
+        })
     }, []);
     return (
         <div className='w-full h-full flex flex-col items-center font-Saira'>

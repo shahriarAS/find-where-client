@@ -11,7 +11,7 @@ import useResetState from "../../hooks/useResetState";
 
 function RegForm({ loading, setLoading }) {
     const [showPass, setShowPass] = useState(false)
-    const resetState = useResetState()
+    const resetStateHook = useResetState()
     const randomGameId = useId()
     const { register, handleSubmit, formState: { errors } } = useForm(
         {
@@ -54,7 +54,7 @@ function RegForm({ loading, setLoading }) {
                         });
                         setLoading(false)
                         toast.success("Successfully Registered and Signed In.")
-                        resetState()
+                        resetStateHook()
                     }).catch((error) => {
                         // An error occurred
                         // ...
@@ -68,6 +68,7 @@ function RegForm({ loading, setLoading }) {
                             // console.log(error)
                             setLoading(false)
                         });
+                        resetStateHook()
                     });
                 })
                 .catch((error) => {

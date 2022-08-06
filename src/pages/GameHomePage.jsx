@@ -12,29 +12,10 @@ function GameHomePage({ gameType }) {
 
     useEffect(() => {
         state.resetState({
-            score: 0,
-            answerStreak: 0,
-            opponentScore: 0,
-            opponentCorrect: 0,
-            opponentIncorrect: 0,
-            opponentHighScore: 0,
-            time: "init",
-            gameOver: "init",
-            gamePause: "init",
-            gameStart: "init",
-            gameWon: false,
-            answer: "",
-            lastAnswer: "",
-            selectedChoice: null,
-            questionSet: [],
-            questionNumber: 0,
-            choices: [],
-            targetCity: [],
-            correctCount: 0,
-            incorrectCount: 0,
-            updateQ: "init",
-            choiceModal: false,
-            isQuesCorr: "init"
+            username: state.username,
+            highScore: state.highScore,
+            isSound: state.isSound,
+            isMusic: state.isMusic,
         })
         state.setPlayBy(gameType)
     }, []);
