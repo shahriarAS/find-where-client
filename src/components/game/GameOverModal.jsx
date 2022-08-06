@@ -19,9 +19,11 @@ function GameOverModal() {
             const gameID = generateRandom()
 
             const addResulToDB = async () => {
+                const isWon = (state.gameMode == "singleplayer" && state.correctCount > state.incorrectCount) ? 1 : (state.gameMode == "multiplayer" && state.score > state.opponentScore) ? 1 : 0
+
                 await updateDoc(gamePlayedRef, {
                     totalScore: increment(state.score),
-                    // winCount: (state.correctCount > state.incorrectCount) ? increment(1) : increment(0),
+                    winCount: increment(isWon),
                     totalMatch: increment(1),
                     highScore: state.score > state.highScore ? state.score : increment(0),
                     [`gamePlayed.${gameID}`]: {

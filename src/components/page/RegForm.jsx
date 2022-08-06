@@ -4,12 +4,16 @@ import { useId, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaLock, FaRegEnvelope, FaRegEye, FaRegEyeSlash, FaUserCircle } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
 import FormDiv from "../../components/page/FormDiv";
 import { auth, db } from "../../config/firebaseConfig.js";
 import useResetState from "../../hooks/useResetState";
+import useStore from "../../store";
 
 
 function RegForm({ loading, setLoading }) {
+    const state = useStore((state) => state)
+    let navigate = useNavigate()
     const [showPass, setShowPass] = useState(false)
     const resetStateHook = useResetState()
     const randomGameId = useId()
@@ -52,8 +56,13 @@ function RegForm({ loading, setLoading }) {
                             },
                             gamePlayed: {},
                         });
-                        toast.success("Successfully Registered And Logged In.")
-                        resetStateHook()
+                        state.resetState({
+                            username: data.username,
+                            highScore: 0,
+                            isSound: true,
+                            isMusic: true,
+                        })
+                        toast.success("Successfully Registered.")
                         setLoading(false)
                     }).catch((error) => {
                         // An error occurred

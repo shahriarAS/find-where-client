@@ -41,6 +41,12 @@ function App() {
         isSound: data.settings.isSound,
         isMusic: data.settings.isMusic,
       })
+      console.log({
+        username: data.username,
+        highScore: data.highScore,
+        isSound: data.settings.isSound,
+        isMusic: data.settings.isMusic,
+      })
     } else {
       // console.log("No such document!");
     }
@@ -53,12 +59,12 @@ function App() {
   useEffect(() => {
     if (user) {
       getDataOnce()
-      // console.log("getDataOnce()")
+      console.log("getDataOnce()")
     } else {
       state.resetState()
-      // console.log("state.resetState()")
+      console.log("state.resetState()")
     }
-  }, [user]);
+  }, [user, auth]);
 
   return (
     loading ? <Loading /> : (
