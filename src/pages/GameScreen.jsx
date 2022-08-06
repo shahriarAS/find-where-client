@@ -58,7 +58,11 @@ function GameScreen() {
 
     useEffect(() => {
         state.gameMode == "singleplayer" ? submitGameSetting() : setLoading(false)
-        socket.on("over-show", () => {
+        socket.on("over-show", (username, highScore, correctCount, score) => {
+            state.setOpponentName(username)
+            state.setopponentHighScore(highScore)
+            state.setOpponentCorrect(correctCount)
+            state.setOpponentScore(score)
             state.setGameOver(true)
         })
     }, [state.gameMode, socket]);

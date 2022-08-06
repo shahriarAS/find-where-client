@@ -52,9 +52,9 @@ function RegForm({ loading, setLoading }) {
                             },
                             gamePlayed: {},
                         });
-                        setLoading(false)
-                        toast.success("Successfully Registered and Signed In.")
+                        toast.success("Successfully Registered And Logged In.")
                         resetStateHook()
+                        setLoading(false)
                     }).catch((error) => {
                         // An error occurred
                         // ...

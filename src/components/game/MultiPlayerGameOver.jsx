@@ -18,7 +18,7 @@ function MultiPlayerGameOver() {
     const [matchWon, setMatchWon] = useState(false)
 
     useEffect(() => {
-        (state.gameOver == true & state.isSound) ? playGameOverSound() : null
+        (state.gameOver == true && state.isSound && state.score >= state.opponentScore) ? playGameOverSound() : null
 
         if (state.score >= state.opponentScore) {
             setMatchWon(true)
@@ -45,7 +45,7 @@ function MultiPlayerGameOver() {
                 ) : null
             }
             <div className="relative w-96 h-5/6 bg-gradient-to-r from-[#667db6] to-[#C06C84] rounded-lg shadow-2xl text-white p-4 py-4 flex flex-col items-center justify-center">
-                <div className="ribbon ribbon-top-left"><span>You</span></div>
+                <div className="ribbon ribbon-top-left"><span className="uppercase">{state.username}</span></div>
                 {
                     matchWon ? (
                         <img src={trophyGoldImg} alt="Victory Trophy" className='w-40 puff-in-center' />) : (
@@ -63,7 +63,7 @@ function MultiPlayerGameOver() {
                     </div>
                 </div>
                 <div className="score-card my-4 text-3xl text-center slide-in-bottom">
-                    <p>Your Score: <CountUp start={0} duration={2} delay={1.4} end={state.score} /></p>
+                    <p>Score: <CountUp start={0} duration={2} delay={1.4} end={state.score} /></p>
                     <p className="text-2xl">High Score: <CountUp start={0} duration={2} delay={1.4} end={state.highScore} /></p>
                 </div>
             </div>
@@ -90,7 +90,7 @@ function MultiPlayerGameOver() {
                 </div>
             </div>
             <div className="relative w-96 h-5/6 bg-gradient-to-r from-[#667db6] to-[#C06C84] rounded-lg shadow-2xl text-white p-4 py-4 flex flex-col items-center justify-center">
-                <div className="ribbon ribbon-top-left"><span>Opponent</span></div>
+                <div className="ribbon ribbon-top-left"><span className="uppercase">{state.opponentName}</span></div>
                 {
                     (state.score == state.opponentScore || state.score < state.opponentScore) ? (
                         <img src={trophyGoldImg} alt="Victory Trophy" className='w-40 puff-in-center' />)
@@ -109,8 +109,8 @@ function MultiPlayerGameOver() {
                     </div>
                 </div>
                 <div className="score-card my-4 text-3xl text-center slide-in-bottom">
-                    <p>Opponent's Score: <CountUp start={0} duration={2} delay={1.4} end={state.opponentScore} /></p>
-                    <p className="text-2xl">Opponent's High Score: <CountUp start={0} duration={2} delay={1.4} end={state.opponentHighScore} /></p>
+                    <p>Score: <CountUp start={0} duration={2} delay={1.4} end={state.opponentScore} /></p>
+                    <p className="text-2xl">High Score: <CountUp start={0} duration={2} delay={1.4} end={state.opponentHighScore} /></p>
                 </div>
             </div>
         </div>

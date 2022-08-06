@@ -50,7 +50,7 @@ function GameTimer() {
 
             if (state.gameOver == true && state.gameMode == "multiplayer") {
                 // console.log("Emit Game Over")
-                socket.emit("game-over", state.gameCode)
+                socket.emit("game-over", state.gameCode, state.username, state.highScore, state.correctCount, state.incorrectCount, state.score)
             }
 
         } else if (state.gamePause != true && state.gameOver != true && state.gameStart != true && state.choiceModal != true) {
