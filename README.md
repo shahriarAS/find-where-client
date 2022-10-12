@@ -2,15 +2,15 @@
 
 This is the frontend part of **Find Where I Am** game.
 
-#### Frontend Challenges I Faced:
+### Frontend Challenges I Faced:
 - Rendering GeoJson.
 - Highlighting specific area and painting gray others area.
 
-#### Frontend Skills I earned
+### Frontend Skills I earned
 - Leaflet library which helps to render map from geoJson.
 - Socket.io client
 
-#### Packages ( Some of them )
+### Packages ( Some of them )
 - ReactJs
 - Firebase
 - Axios
@@ -20,7 +20,7 @@ This is the frontend part of **Find Where I Am** game.
 - React Hook Form
 - React Charts
 
-#### Screenshots
+### Screenshots
 
 **Homepage**
 ![Homepage](https://i.postimg.cc/rwVGXhRZ/Screenshot-2022-10-12-Find-Where-I-Am-Online-Solo-Multiplayer-Game.png)
