@@ -6,7 +6,7 @@ function GameScreenOverlay() {
     return (
         <>
             <div className="power-div z-10 absolute inset-0 w-24 cursor-pointer">
-                <img src={powerImg} alt="Power" className="w-full" />
+                <img src={powerImg} alt="Power" className="w-full" onClick={() => state.setGamePause(true)} />
             </div>
             {/* <div className="help-div z-10 absolute right-4 top-4 w-12 cursor-pointer">
                 <img src={helpImg} alt="help" className="w-full" />

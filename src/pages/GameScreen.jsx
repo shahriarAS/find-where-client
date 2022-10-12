@@ -4,6 +4,7 @@ import { countries, usState } from "../assets/data/data";
 import gameScreenBG from "../assets/images/gameScreenBG.jpeg";
 import GameMap from "../components/game/GameMap";
 import GameOverModal from "../components/game/GameOverModal";
+import GamePauseModal from "../components/game/GamePauseModal";
 import GameQuestionPanel from "../components/game/GameQuestionPanel";
 import GameScreenOverlay from "../components/game/GameScreenOverlay";
 import GameStat from "../components/game/GameStat";
@@ -81,6 +82,7 @@ function GameScreen() {
                 <GameStat />
                 <GameQuestionPanel nameKey={nameKey} />
                 <GameOverModal />
+                <GamePauseModal />
             </div >
     );
 }
