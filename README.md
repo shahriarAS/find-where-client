@@ -1,20 +1,19 @@
-## Find Where I Am
+## Frontend - Find Where I Am
 
-This is an **online multiplayer** game.
+This is the frontend part of **Find Where I Am** game.
 
-**Game Features**:
-1. User Sign Up, Login
-2. User Profile ( Game History, Last 10 Match Graph, Update Profile )
-3. Leaderboard ( Dynamic data from database )
-4. Singleplayer Game
-5. Multiplayer Game ( Host game, join game and play with friends )
-6. Online Game
-
-**Challenges I Faced**:
+**Frontend Challenges I Faced**:
 - Rendering GeoJson.
 - Highlighting specific area and painting gray others area.
-- Socket.io state management.
 
-**Skills I earned**
+**Frontend Skills I earned**
 - Leaflet library which helps to render map from geoJson.
-- Socket.io
+- Socket.io client
+
+**Screenshots**
+
+![Homepage](https://i.postimg.cc/rwVGXhRZ/Screenshot-2022-10-12-Find-Where-I-Am-Online-Solo-Multiplayer-Game.png)
+![Game Screen](https://i.postimg.cc/vZdyQNry/Screenshot-2022-10-12-Find-Where-I-Am-Online-Solo-Multiplayer-Game-2.png)
+![Leaderboard](https://i.postimg.cc/y6vn6g08/Screenshot-2022-10-12-Find-Where-I-Am-Online-Solo-Multiplayer-Game-1.png)
+![Multiplayer](https://i.postimg.cc/DwsqG84s/Screenshot-2022-10-12-Find-Where-I-Am-Online-Solo-Multiplayer-Game-3.png)
+![Setting Page](https://i.postimg.cc/Z5kNJ4sq/Screenshot-2022-10-12-Find-Where-I-Am-Online-Solo-Multiplayer-Game-4.png)
